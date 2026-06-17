@@ -1,49 +1,64 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact | Mary Digi Solutions</title><meta name="description" content="Book an appointment or consult for free with Mary Digi Solutions for digital marketing, business automation, CRM, websites, and growth systems."><meta property="og:title" content="Contact | Mary Digi Solutions"><meta property="og:description" content="Book an appointment or consult for free with Mary Digi Solutions for digital marketing, business automation, CRM, websites, and growth systems."><meta property="og:type" content="website"><meta property="og:url" content="https://marydigisolutions.com/"><link rel="icon" href="img/logo-icon.png"><link rel="stylesheet" href="css/style.css"></head>
-<body><div class="page-transition"><img src="img/logo-icon.png" alt="Mary Digi"></div><canvas id="techCanvas" aria-hidden="true"></canvas><div class="aurora"></div>
-<header class="site-header"><a class="brand" href="index.html" aria-label="Mary Digi Solutions Home"><img src="img/logo-icon.png" alt="Mary Digi Solutions logo"><span class="brand-text"><b>Mary Digi</b><small>Solutions</small></span></a><nav class="nav-menu"><a class="" href="index.html">Home</a><a class="" href="services.html">Services</a><a class="" href="how-it-works.html">How It Works</a><a class="" href="portfolio.html">Portfolio</a><a class="" href="about.html">Founders</a><a class="active" href="contact.html">Contact</a><span class="nav-pill"></span></nav><div class="actions"><button class="theme-toggle" aria-label="Toggle theme">☼</button><button class="btn small js-appointment" type="button">Book an Appointment</button><button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
+<body class="dark"><div class="page-transition"><img src="img/logo-icon.png" alt="Mary Digi"></div><canvas id="techCanvas" aria-hidden="true"></canvas><div class="aurora"></div>
+<header class="site-header"><a class="brand" href="index.html" aria-label="Mary Digi Solutions Home"><img src="img/logo-icon.png" alt="Mary Digi Solutions logo"><span class="brand-text"><b>Mary Digi</b><small>Solutions</small></span></a><nav class="nav-menu"><a class="" href="index.html">Home</a><a class="" href="services.html">Services</a><a class="" href="how-it-works.html">How It Works</a><a class="" href="portfolio.html">Portfolio</a><a class="" href="about.html">Founders</a><a class="active" href="contact.html">Contact</a><span class="nav-pill"></span></nav><div class="actions"><button class="theme-toggle" aria-label="Toggle theme" aria-hidden="true" tabindex="-1" style="display:none !important;">☼</button><button class="btn small js-appointment" type="button">Book an Appointment</button><button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
 
 <main>
   <section class="page-hero contact-hero">
     <div class="container reveal">
       <span class="eyebrow">Contact Mary Digi Solutions</span>
-      <h1>Let’s talk about your next growth system.</h1>
-      <p>Send your inquiry through email or schedule a free strategy call. We’ll help you identify the right website, automation, CRM, or marketing solution for your business.</p>
+      <h1>Let’s clarify your next growth system.</h1>
+      <p>Send your inquiry or schedule a free strategy call. We will help identify the highest-impact website, automation, CRM, funnel, or workflow improvement for your business.</p>
     </div>
   </section>
 
-  <section class="section contact-main-section">
+  <section class="section contact-main-section" id="inquiry">
     <div class="container">
       <div class="contact-layout reveal">
         <div class="contact-form-card">
           <span class="eyebrow">Send Inquiry</span>
           <h2>Tell us what you want to improve.</h2>
-          <p>Prefer writing first? Send your project details and our team will review your inquiry.</p>
+          <p>Prefer writing first? Share the business goal, current workflow, and the area that feels slow, unclear, or manual.</p>
 
-          <form class="contact-form" action="mailto:contact@mail.marydigisolutions.com" method="post" enctype="text/plain">
+          <form class="contact-form ghl-ready-form" id="inquiryForm" action="contact.html#inquiry" method="get">
             <input type="text" name="Name" placeholder="Your Name" required>
             <input type="text" name="Business" placeholder="Business Name">
             <input type="email" name="Email" placeholder="Email Address" required>
             <textarea name="Message" placeholder="What system or workflow do you want to improve?" required></textarea>
-            <button class="btn" type="submit">Send Inquiry →</button>
+            <button class="btn" type="submit">Send Inquiry →</button><p class="form-status" id="inquiryFormStatus" aria-live="polite"></p>
           </form>
         </div>
 
         <div class="strategy-card">
           <img src="img/logo-icon.png" alt="Mary Digi Solutions logo">
           <span class="eyebrow">Free Consultation</span>
-          <h2>Book a Strategy Call</h2>
-          <p>Best for business owners who want automation, CRM, lead management, websites, funnels, or workflow support.</p>
+          <h2>Book a System Review</h2>
+          <p>Best for business owners who want automation, CRM, lead management, websites, funnels, reporting, or workflow support.</p>
 
           <div class="strategy-details">
-            <p><b>Email:</b> <a href="mailto:contact@mail.marydigisolutions.com">contact@mail.marydigisolutions.com</a></p>
+            <p><b>Email:</b> <a href="contact.html#inquiry">contact@mail.marydigisolutions.com</a></p>
             <p><b>Hours:</b> Monday – Friday, 9:00 AM – 6:00 PM PHT</p>
             <p><b>Meeting:</b> 30-minute Google Meet discovery call</p>
           </div>
 
-          <a class="btn" href="#calendar">Schedule a Call →</a>
+          <a class="btn" href="#calendar" data-scroll-target="#calendar">Schedule a Call →</a>
           <p class="contact-flow-note">Use the booking calendar below to choose your preferred date and time.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section next-steps-section" aria-label="What happens next">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">What Happens Next</span>
+        <h2>A clear first conversation, not a hard sell.</h2>
+        <p>The first discussion is designed to understand your business process and recommend the most practical next step.</p>
+      </div>
+      <div class="enterprise-grid stagger">
+        <article class="enterprise-card"><span>Step 1</span><h3>Review your current flow</h3><p>We look at how leads, clients, content, and follow-ups currently move through your business.</p></article>
+        <article class="enterprise-card"><span>Step 2</span><h3>Identify the highest-impact gap</h3><p>We help determine whether the priority is CRM, automation, website structure, booking, reporting, or content support.</p></article>
+        <article class="enterprise-card"><span>Step 3</span><h3>Recommend a practical path</h3><p>You leave with a clearer next step and a better understanding of what should be built first.</p></article>
       </div>
     </div>
   </section>
@@ -54,8 +69,8 @@
     <div class="calendar-wrapper reveal">
       <div class="calendar-header">
         <span class="calendar-badge">📅 Free Discovery Call</span>
-        <h2>Book Your Free Consultation</h2>
-        <p>Choose your preferred date and time below. This 30-minute Google Meet call is designed to understand your goals and recommend the best next step for your business.</p>
+        <h2>Book Your Free System Review</h2>
+        <p>Choose your preferred date and time below. This 30-minute Google Meet call is designed to understand your current workflow, business goals, and best next system improvement.</p>
       </div>
 
       <div class="calendar-features">
@@ -88,10 +103,8 @@
     <h3 id="appointmentTitle">Choose your preferred consultation method.</h3>
     <p>Choose your preferred consultation method. Start through email or schedule a call through our calendar.</p>
     <div class="appointment-options">
-      <a class="appointment-card" href="mailto:contact@mail.marydigisolutions.com?subject=Free%20Consultation%20Inquiry%20-%20Mary%20Digi%20Solutions">
-        <i>✉️</i><b>Consult Through Email</b><span>Send your inquiry to contact@mail.marydigisolutions.com</span>
-      </a>
-      <a class="appointment-card" href="#calendar">
+      <a class="appointment-card" href="contact.html#inquiry"><i>✉️</i><b>Send an Inquiry</b><span>Use the website inquiry form instead of opening an email app.</span></a>
+      <a class="appointment-card" href="#calendar" data-scroll-target="#calendar">
         <i>📅</i><b>Schedule a Call</b><span>Open the calendar booking option.</span>
       </a>
     </div>
@@ -123,7 +136,7 @@
       <p class="footer-tagline">You’re an expert in your niche.<br>Let’s make sure the world knows it.</p>
       <div class="footer-mini-line"></div>
       <div class="footer-contact-list">
-        <a href="mailto:contact@mail.marydigisolutions.com"><span>✉</span> contact@mail.marydigisolutions.com</a>
+        <a href="contact.html#inquiry"><span>✉</span> contact@mail.marydigisolutions.com</a>
         <a href="https://marydigisolutions.com/" target="_blank" rel="noopener"><span>◎</span> marydigisolutions.com</a>
       </div>
     </div>
@@ -168,9 +181,9 @@
       </div>
       <p>© 2026 <strong>Mary Digi Solutions.</strong> All Rights Reserved.</p>
       <div class="footer-policy">
-        <a href="#">Privacy Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
         <span></span>
-        <a href="#">Terms of Service</a>
+        <a href="terms-and-conditions.html">Terms and Conditions</a>
       </div>
     </div>
   </div>
