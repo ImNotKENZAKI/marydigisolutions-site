@@ -12,7 +12,7 @@
 
 /* V75 premium interaction polish */
 (function(){
-  const premiumTargets = document.querySelectorAll('.v73-dashboard,.intelligence-board,.intel-card,.v70-service-card,.impact-card,.cap-pill,.enterprise-card,.implementation-timeline article,.office-slide,.work-card,.v84-office-panel,.v84-founder-signal,.system-stack-card');
+  const premiumTargets = document.querySelectorAll('.hero2-panel,.hero2-dashboard,.v73-dashboard,.intelligence-board,.intel-card,.v70-service-card,.impact-card,.cap-pill,.enterprise-card,.implementation-timeline article,.office-slide,.work-card,.v84-office-panel,.v84-founder-signal,.system-stack-card');
 
   premiumTargets.forEach(card => {
     card.addEventListener('pointermove', e => {
@@ -37,6 +37,48 @@
       visual.style.setProperty('--hero-x', `${x}px`);
       visual.style.setProperty('--hero-y', `${y}px`);
     });
+  }
+})();
+
+
+/* V92 Hero 2.0 focused interactions */
+(function(){
+  const hero = document.querySelector('.hero2');
+  if(!hero) return;
+
+  const visual = hero.querySelector('.hero2-visual');
+  const leads = hero.querySelector('[data-hero2-leads]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(visual && !reducedMotion && window.matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('pointermove', e => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - .5) * 12;
+      const y = ((e.clientY - rect.top) / rect.height - .5) * 10;
+      visual.style.setProperty('--hero2-shift-x', `${x}px`);
+      visual.style.setProperty('--hero2-shift-y', `${y}px`);
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      visual.style.setProperty('--hero2-shift-x', '0px');
+      visual.style.setProperty('--hero2-shift-y', '0px');
+    });
+  }
+
+  if(leads && !reducedMotion){
+    const start = 96;
+    const end = 127;
+    const duration = 1300;
+    const begin = performance.now();
+
+    function tick(now){
+      const progress = Math.min(1, (now - begin) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      leads.textContent = `+${Math.round(start + (end - start) * eased)} Leads`;
+      if(progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
   }
 })();
 /* V70 default dark mode */
@@ -462,11 +504,31 @@ document.querySelectorAll('.founder-hierarchy-grid .founder-profile, .founder-sy
   }, true);
 
   document.addEventListener("submit", function(e){
-    const form = e.target.closest("#inquiryForm, .ghl-ready-form, .contact-form");
+    const form = e.target.closest("#inquiryForm");
     if(!form) return;
-    if((form.getAttribute("action") || "").startsWith(["mail","to:"].join(""))){
-      e.preventDefault();
+
+    e.preventDefault();
+
+    const status = document.getElementById("inquiryFormStatus");
+    const data = new FormData(form);
+    const targetEmail = form.dataset.email || "contact@mail.marydigisolutions.com";
+    const subject = encodeURIComponent("Mary Digi Solutions Website Inquiry");
+    const body = encodeURIComponent([
+      "New website inquiry from Mary Digi Solutions",
+      "",
+      `Name: ${data.get("Name") || ""}`,
+      `Business: ${data.get("Business") || ""}`,
+      `Email: ${data.get("Email") || ""}`,
+      "",
+      "Message:",
+      data.get("Message") || ""
+    ].join("\n"));
+
+    if(status){
+      status.textContent = "Opening your email app so this inquiry can be sent to Mary Digi Solutions.";
     }
+
+    window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
   }, true);
 })();
 
@@ -1041,3 +1103,50 @@ document.addEventListener('DOMContentLoaded',()=>{
  });
  }
 });
+
+
+/* V88 Hero premium interactions */
+(function(){
+  const hero = document.querySelector('.v73-hero');
+  const dash = document.querySelector('.v73-dashboard');
+  const grid = document.querySelector('.v78-animated-grid, .v73-grid-bg');
+  const title = document.querySelector('.v88-title');
+  const leads = Array.from(document.querySelectorAll('.v73-panel-title strong')).find(el => /Leads/i.test(el.textContent || ''));
+
+  // Animated lead count on load
+  if(leads && !leads.dataset.v88Animated){
+    leads.dataset.v88Animated = 'true';
+    let start = 96;
+    const end = 127;
+    const duration = 1400;
+    const begin = performance.now();
+
+    function tick(now){
+      const progress = Math.min(1, (now - begin) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(start + (end - start) * eased);
+      leads.textContent = `+${value} Leads`;
+      if(progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Subtle parallax
+  if(hero && dash && window.matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('mousemove', function(e){
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - .5);
+      const y = ((e.clientY - rect.top) / rect.height - .5);
+
+      dash.style.transform = `rotateY(${-5 + x * 3}deg) rotateX(${2.5 - y * 3}deg) translate3d(${x * 10}px, ${y * 8}px, 0)`;
+      if(grid) grid.style.transform = `translate3d(${x * 8}px, ${y * 6}px, 0)`;
+      if(title) title.style.transform = `translate3d(${x * -3}px, ${y * -2}px, 0)`;
+    });
+
+    hero.addEventListener('mouseleave', function(){
+      dash.style.transform = '';
+      if(grid) grid.style.transform = '';
+      if(title) title.style.transform = '';
+    });
+  }
+})();
