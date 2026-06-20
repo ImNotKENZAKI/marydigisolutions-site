@@ -119,7 +119,7 @@ hamburger?.addEventListener('click',()=>{hamburger.classList.toggle('active');na
 links.forEach(a=>a.addEventListener('click',e=>{hamburger?.classList.remove('active');nav?.classList.remove('open');const href=a.getAttribute('href');if(href&&href.endsWith('.html')&&!location.pathname.endsWith(href)){e.preventDefault();pageTransition?.classList.add('active');setTimeout(()=>location.href=href,360)}}));
 function movePill(el){if(!navPill||!el||innerWidth<980)return;const n=nav.getBoundingClientRect(),r=el.getBoundingClientRect();navPill.style.width=r.width+'px';navPill.style.transform=`translateX(${r.left-n.left}px)`}
 const active=document.querySelector('.nav-menu a.active')||links[0];setTimeout(()=>movePill(active),120);links.forEach(l=>l.addEventListener('mouseenter',()=>movePill(l)));nav?.addEventListener('mouseleave',()=>movePill(active));window.addEventListener('resize',()=>movePill(active));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.16});document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.16});const revealTargets=document.querySelectorAll('.reveal,.stagger');if(window.matchMedia('(max-width:760px)').matches){revealTargets.forEach(el=>el.classList.add('show'))}else{revealTargets.forEach(el=>io.observe(el))}
 // counters
 const counters=document.querySelectorAll('[data-count]');const co=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target,target=Number(el.dataset.count);let v=0,step=Math.max(1,Math.ceil(target/55));const timer=setInterval(()=>{v+=step;if(v>=target){v=target;clearInterval(timer)}el.textContent=target===24?`${v}/7`:`${v}+`},24);co.unobserve(el)})},{threshold:.7});counters.forEach(c=>co.observe(c));
 // tilt
@@ -503,33 +503,6 @@ document.querySelectorAll('.founder-hierarchy-grid .founder-profile, .founder-sy
     }
   }, true);
 
-  document.addEventListener("submit", function(e){
-    const form = e.target.closest("#inquiryForm");
-    if(!form) return;
-
-    e.preventDefault();
-
-    const status = document.getElementById("inquiryFormStatus");
-    const data = new FormData(form);
-    const targetEmail = form.dataset.email || "contact@mail.marydigisolutions.com";
-    const subject = encodeURIComponent("Mary Digi Solutions Website Inquiry");
-    const body = encodeURIComponent([
-      "New website inquiry from Mary Digi Solutions",
-      "",
-      `Name: ${data.get("Name") || ""}`,
-      `Business: ${data.get("Business") || ""}`,
-      `Email: ${data.get("Email") || ""}`,
-      "",
-      "Message:",
-      data.get("Message") || ""
-    ].join("\n"));
-
-    if(status){
-      status.textContent = "Opening your email app so this inquiry can be sent to Mary Digi Solutions.";
-    }
-
-    window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
-  }, true);
 })();
 
 
@@ -1149,4 +1122,27 @@ document.addEventListener('DOMContentLoaded',()=>{
       if(title) title.style.transform = '';
     });
   }
+})();
+
+/* V98 keep the direct GHL calendar fitted without an outer scrollbar */
+(function(){
+  const bookingFrame = document.querySelector('.calendar-embed-container iframe[src*="/widget/booking/"]');
+  if(!bookingFrame) return;
+
+  const applyCalendarHeight = value => {
+    const requestedHeight = Number(value);
+    if(!Number.isFinite(requestedHeight)) return;
+
+    const fittedHeight = Math.min(1400, Math.max(820, Math.ceil(requestedHeight)));
+    bookingFrame.style.setProperty('height', `${fittedHeight}px`, 'important');
+  };
+
+  window.addEventListener('message', event => {
+    if(event.origin !== 'https://api.leadconnectorhq.com') return;
+    if(!Array.isArray(event.data) || event.data[0] !== 'highlevel.setHeight') return;
+
+    const payload = event.data[1];
+    if(!payload || payload.id !== 'msgsndr-calendar') return;
+    applyCalendarHeight(payload.height);
+  });
 })();

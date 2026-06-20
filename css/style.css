@@ -3549,6 +3549,53 @@ body.dark .founder-hierarchy-grid .founder-info h3{color:#f8fbff}
   }
 }
 
+/* V96 dark glass border polish */
+.ghl-inquiry-embed{
+  border:0 !important;
+  background:#07182f !important;
+  box-shadow:none !important;
+}
+
+.ghl-inquiry-embed iframe{
+  width:min(100%,800px) !important;
+  margin:0 auto !important;
+  border:0 !important;
+  background:#07182f !important;
+}
+
+.hero2-dashboard,
+.hero2-flow,
+.hero2-panel,
+.hero2-kpis span{
+  border-color:rgba(56,189,248,.18) !important;
+}
+
+.hero2-dashboard{
+  box-shadow:
+    inset 0 1px 0 rgba(125,211,252,.05),
+    0 28px 80px rgba(0,0,0,.28) !important;
+}
+
+.hero2-panel,
+.hero2-kpis span{
+  box-shadow:inset 0 1px 0 rgba(125,211,252,.04) !important;
+}
+
+@media(max-width:760px){
+  .hero2-dashboard,
+  .hero2-flow,
+  .hero2-panel,
+  .hero2-kpis span{
+    border-color:rgba(56,189,248,.16) !important;
+  }
+
+  .hero2-dashboard{
+    box-shadow:
+      inset 0 1px 0 rgba(125,211,252,.04),
+      0 18px 46px rgba(0,0,0,.24) !important;
+  }
+}
+
 
 /* === V55 Light Mode Modal Visibility + Social Brand Hover Polish === */
 
@@ -12836,5 +12883,275 @@ main{
 
   .hero2-kpis{
     padding:0 14px 14px;
+  }
+}
+
+/* V94 direct GHL inquiry form */
+.ghl-inquiry-embed{
+  width:100%;
+  height:780px;
+  margin-top:24px;
+  overflow:hidden;
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:24px;
+  background:#07182f;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.ghl-inquiry-embed iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  border-radius:24px;
+  background:#07182f;
+}
+
+@media(max-width:760px){
+  .ghl-inquiry-embed{
+    height:860px;
+    margin-top:20px;
+    border-radius:20px;
+  }
+
+  .ghl-inquiry-embed iframe{
+    border-radius:20px;
+  }
+}
+
+/* V95 mobile stability and GHL embed polish */
+@media(min-width:1181px){
+  .contact-main-section > .container{
+    width:min(1440px,94vw) !important;
+    max-width:1440px !important;
+  }
+
+  .contact-main-section .contact-layout{
+    grid-template-columns:minmax(760px,1.35fr) minmax(360px,.65fr) !important;
+    gap:28px !important;
+    align-items:stretch !important;
+  }
+}
+
+.ghl-inquiry-embed,
+.ghl-inquiry-embed iframe{
+  max-width:100%;
+  overflow:hidden !important;
+}
+
+@media(max-width:760px){
+  .hero2{
+    display:block !important;
+    min-height:auto !important;
+    height:auto !important;
+    padding:104px 0 44px !important;
+    overflow:hidden !important;
+  }
+
+  .hero2-layout{
+    position:relative !important;
+    display:flex !important;
+    flex-direction:column !important;
+    grid-template-columns:none !important;
+    align-items:stretch !important;
+    width:calc(100% - 28px) !important;
+    max-width:540px !important;
+    min-height:0 !important;
+    margin:0 auto !important;
+    gap:28px !important;
+  }
+
+  .hero2-copy,
+  .hero2-visual{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    margin:0 !important;
+    transform:none !important;
+  }
+
+  .hero2-copy{
+    z-index:2 !important;
+    order:1 !important;
+  }
+
+  .hero2-visual{
+    z-index:1 !important;
+    order:2 !important;
+  }
+
+  .hero2-eyebrow{
+    display:inline-flex !important;
+    width:max-content !important;
+    max-width:100% !important;
+    padding:8px 12px !important;
+    white-space:nowrap !important;
+    font-size:10px !important;
+    line-height:1.2 !important;
+  }
+
+  .hero2-title{
+    width:100% !important;
+    max-width:100% !important;
+    margin-top:22px !important;
+    font-size:clamp(46px,14vw,64px) !important;
+    line-height:.94 !important;
+    letter-spacing:0 !important;
+  }
+
+  .hero2-title span,
+  .hero2-lead{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .hero2-lead{
+    margin-top:20px !important;
+    font-size:15px !important;
+    line-height:1.58 !important;
+  }
+
+  .hero2-actions{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    width:100% !important;
+  }
+
+  .hero2-actions .btn{
+    width:100% !important;
+  }
+
+  .hero2-flow{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  .hero2-dashboard{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+
+  .hero2-dashboard-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    width:100% !important;
+  }
+
+  .hero2-pipeline,
+  .hero2-side,
+  .hero2-panel,
+  .hero2-kpis{
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  .reveal,
+  .stagger > *{
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+  }
+
+  .v78-services-section,
+  .v78-services-grid{
+    min-height:0 !important;
+    height:auto !important;
+  }
+
+  .v78-services-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    margin-top:28px !important;
+  }
+}
+
+/* V97 tested direct GHL embeds and contact layout */
+.ghl-inquiry-embed{
+  position:relative;
+  height:750px !important;
+}
+
+.ghl-inquiry-embed::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:min(100%,800px);
+  transform:translateX(-50%);
+  z-index:2;
+  border-radius:inherit;
+  box-shadow:
+    inset 0 2px 0 #07182f,
+    inset 2px 0 0 #07182f,
+    inset -2px 0 0 #07182f,
+    inset 0 -24px 0 #07182f;
+  pointer-events:none;
+}
+
+.ghl-inquiry-embed iframe{
+  position:relative !important;
+  left:auto !important;
+  display:block !important;
+  width:min(100%,800px) !important;
+  height:750px !important;
+  min-height:0 !important;
+  margin:0 auto !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  overflow:hidden !important;
+}
+
+.calendar-embed-container iframe{
+  position:relative !important;
+  left:auto !important;
+  display:block !important;
+  width:100% !important;
+  height:1086px !important;
+  min-height:0 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  overflow:hidden !important;
+}
+
+@media(min-width:1181px){
+  .contact-main-section .contact-layout{
+    align-items:start !important;
+  }
+
+  .contact-main-section .strategy-card{
+    position:sticky !important;
+    top:118px !important;
+    align-self:start !important;
+  }
+
+  #calendar .calendar-wrapper{
+    max-width:1040px !important;
+  }
+}
+
+@media(max-width:760px){
+  .ghl-inquiry-embed,
+  .ghl-inquiry-embed iframe{
+    height:780px !important;
+  }
+
+  .calendar-embed-container iframe{
+    height:920px !important;
+  }
+
+  .contact-main-section .strategy-card{
+    position:relative !important;
+    top:auto !important;
   }
 }
