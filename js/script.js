@@ -119,9 +119,26 @@ hamburger?.addEventListener('click',()=>{hamburger.classList.toggle('active');na
 links.forEach(a=>a.addEventListener('click',e=>{hamburger?.classList.remove('active');nav?.classList.remove('open');const href=a.getAttribute('href');if(href&&href.endsWith('.html')&&!location.pathname.endsWith(href)){e.preventDefault();pageTransition?.classList.add('active');setTimeout(()=>location.href=href,360)}}));
 function movePill(el){if(!navPill||!el||innerWidth<980)return;const n=nav.getBoundingClientRect(),r=el.getBoundingClientRect();navPill.style.width=r.width+'px';navPill.style.transform=`translateX(${r.left-n.left}px)`}
 const active=document.querySelector('.nav-menu a.active')||links[0];setTimeout(()=>movePill(active),120);links.forEach(l=>l.addEventListener('mouseenter',()=>movePill(l)));nav?.addEventListener('mouseleave',()=>movePill(active));window.addEventListener('resize',()=>movePill(active));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.16});const revealTargets=document.querySelectorAll('.reveal,.stagger');if(window.matchMedia('(max-width:760px)').matches){revealTargets.forEach(el=>el.classList.add('show'))}else{revealTargets.forEach(el=>io.observe(el))}
+const revealTargets=document.querySelectorAll('.reveal,.stagger');
+const revealImmediately=!('IntersectionObserver' in window)||window.matchMedia('(max-width:760px)').matches||window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(revealImmediately){
+  revealTargets.forEach(el=>el.classList.add('show'));
+}else{
+  const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    entry.target.classList.add('show');
+    io.unobserve(entry.target);
+  }),{threshold:.16});
+  revealTargets.forEach(el=>io.observe(el));
+}
 // counters
-const counters=document.querySelectorAll('[data-count]');const co=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target,target=Number(el.dataset.count);let v=0,step=Math.max(1,Math.ceil(target/55));const timer=setInterval(()=>{v+=step;if(v>=target){v=target;clearInterval(timer)}el.textContent=target===24?`${v}/7`:`${v}+`},24);co.unobserve(el)})},{threshold:.7});counters.forEach(c=>co.observe(c));
+const counters=document.querySelectorAll('[data-count]');
+if('IntersectionObserver' in window){
+  const co=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target,target=Number(el.dataset.count);let v=0,step=Math.max(1,Math.ceil(target/55));const timer=setInterval(()=>{v+=step;if(v>=target){v=target;clearInterval(timer)}el.textContent=target===24?`${v}/7`:`${v}+`},24);co.unobserve(el)})},{threshold:.7});
+  counters.forEach(c=>co.observe(c));
+}else{
+  counters.forEach(el=>{const target=Number(el.dataset.count);el.textContent=target===24?`${target}/7`:`${target}+`;});
+}
 // tilt
 Array.from(document.querySelectorAll('.card,.founder-card,.case')).forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*5}deg) rotateY(${x*7}deg) translateY(-6px)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
 // tech canvas

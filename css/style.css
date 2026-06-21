@@ -12223,9 +12223,9 @@ main{
   text-transform:uppercase;
   backdrop-filter:blur(18px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 14px 42px rgba(0,0,0,.20);
-  opacity:0;
-  transform:translateY(16px);
-  animation:hero2CopyIn .7s cubic-bezier(.18,.9,.2,1) .08s forwards;
+  opacity:1;
+  transform:none;
+  animation:hero2CopyIn .7s cubic-bezier(.18,.9,.2,1) .08s both;
 }
 
 .hero2-eyebrow::before{
@@ -12245,9 +12245,9 @@ main{
   letter-spacing:-.078em;
   text-wrap:balance;
   text-shadow:0 22px 70px rgba(0,0,0,.50);
-  opacity:0;
-  transform:translateY(22px);
-  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .18s forwards;
+  opacity:1;
+  transform:none;
+  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .18s both;
 }
 
 .hero2-title span{
@@ -12269,9 +12269,9 @@ main{
   line-height:1.62;
   font-weight:740;
   text-shadow:0 14px 34px rgba(0,0,0,.48);
-  opacity:0;
-  transform:translateY(22px);
-  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .30s forwards;
+  opacity:1;
+  transform:none;
+  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .30s both;
 }
 
 .hero2-actions{
@@ -12280,9 +12280,9 @@ main{
   flex-wrap:wrap;
   gap:14px;
   margin:32px 0 24px;
-  opacity:0;
-  transform:translateY(22px);
-  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .42s forwards;
+  opacity:1;
+  transform:none;
+  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .42s both;
 }
 
 .hero2-actions .btn{
@@ -12309,9 +12309,9 @@ main{
   background:linear-gradient(135deg, rgba(6,22,49,.72), rgba(3,10,24,.42));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 28px 80px rgba(0,0,0,.18);
   backdrop-filter:blur(18px);
-  opacity:0;
-  transform:translateY(18px);
-  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .54s forwards;
+  opacity:1;
+  transform:none;
+  animation:hero2CopyIn .8s cubic-bezier(.18,.9,.2,1) .54s both;
 }
 
 .hero2-flow span{
@@ -12358,8 +12358,8 @@ main{
   position:relative;
   transform:translate3d(var(--hero2-shift-x,0), var(--hero2-shift-y,0), 0);
   transition:transform .18s ease-out;
-  opacity:0;
-  animation:hero2VisualIn .9s cubic-bezier(.18,.9,.2,1) .30s forwards;
+  opacity:1;
+  animation:hero2VisualIn .9s cubic-bezier(.18,.9,.2,1) .30s both;
 }
 
 .hero2-dashboard{
@@ -12565,7 +12565,7 @@ main{
   text-transform:uppercase;
 }
 
-@keyframes hero2CopyIn{to{opacity:1;transform:translateY(0)}}
+@keyframes hero2CopyIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes hero2VisualIn{from{opacity:0;transform:translate3d(18px,24px,0) scale(.985)}to{opacity:1;transform:translate3d(var(--hero2-shift-x,0), var(--hero2-shift-y,0), 0) scale(1)}}
 @keyframes hero2VideoDrift{from{transform:scale(1.02) translate3d(-8px,-4px,0)}to{transform:scale(1.055) translate3d(10px,6px,0)}}
 @keyframes hero2GridMove{to{background-position:96px 96px,96px 96px,520px 0}}
@@ -12620,6 +12620,20 @@ main{
   .hero2-grid{
     animation:none !important;
     transition:none !important;
+  }
+
+  .hero2-eyebrow,
+  .hero2-title,
+  .hero2-lead,
+  .hero2-actions,
+  .hero2-flow,
+  .hero2-visual{
+    opacity:1 !important;
+    transform:none !important;
+  }
+
+  .hero2-dashboard{
+    transform:none !important;
   }
 }
 
