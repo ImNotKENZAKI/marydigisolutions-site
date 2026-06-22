@@ -575,6 +575,10 @@ document.addEventListener("click", function(e){
       tags: ["Product Video", "Responsive", "Trust Assets", "Conversion Flow"],
       metric: "Benefit-led product presentation"
     },
+    "Clinic Funnels PH - Patient Booking Funnel": {
+      tags: ["Clinic Funnel", "PH Market", "Lead Capture", "Booking Automation"],
+      metric: "Connects the clinic offer, lead form, and strategy-call path"
+    },
     "Fußwohl® Leather Shoes": {
       tags: ["Premium Product", "Funnels", "Brand System", "Content Workflow"],
       metric: "High-trust product showcase"
@@ -596,6 +600,7 @@ document.addEventListener("click", function(e){
     if(url.includes("aTporYmDW9U")) return projects["German Client VSL"];
     if(url.includes("R1LLIn18NC8")) return projects["CIC Pro Hearing Aid"];
     if(url.includes("WfJOJ65yrT8")) return projects["Fußwohl® Leather Shoes"];
+    if(url.includes("en8lbkQVhxY")) return projects["Clinic Funnels PH - Patient Booking Funnel"];
     if(url.includes("4d20b047c8024a799dba6dd3b06a3ac6")) return projects["How I Built This Website"];
     if(url.includes("caa94c965beb4c2ca2e639cea0022e95")) return projects["A Wellness Website Build"];
     return projects[title] || Object.entries(projects).find(([name]) => title.includes(name.split(" ")[0]))?.[1];

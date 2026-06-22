@@ -13175,3 +13175,144 @@ main{
     top:auto !important;
   }
 }
+
+/* === V103 Portfolio hierarchy + featured clinic funnel === */
+.founder-hierarchy-grid .skill-row span{
+  max-width:100%;
+  white-space:normal;
+  text-align:center;
+  line-height:1.25;
+}
+
+.clinic-funnel-feature{
+  position:relative;
+  padding-top:0 !important;
+}
+
+.clinic-funnel-feature .work-card-featured{
+  border-color:rgba(56,189,248,.28);
+  background:linear-gradient(145deg,rgba(8,27,57,.98),rgba(3,15,36,.98));
+  box-shadow:0 34px 90px rgba(2,8,23,.42),0 0 0 1px rgba(56,189,248,.04) inset;
+}
+
+.clinic-funnel-feature .work-card-featured:hover{
+  transform:translateY(-4px);
+}
+
+.clinic-funnel-feature .work-card-featured .work-copy{
+  padding:clamp(26px,3.2vw,44px);
+}
+
+.clinic-funnel-feature .work-card-featured .work-copy > span{
+  display:inline-flex;
+  align-self:flex-start;
+  padding:8px 11px;
+  border:1px solid rgba(56,189,248,.24);
+  border-radius:999px;
+  background:rgba(14,165,233,.08);
+}
+
+.clinic-funnel-feature .work-card-featured .work-copy h3{
+  font-size:clamp(30px,3vw,48px);
+  max-width:13ch;
+}
+
+.clinic-funnel-feature .work-card-featured .work-copy p{
+  font-size:16px;
+  max-width:58ch;
+}
+
+.clinic-funnel-feature .project-result{
+  margin-top:8px;
+  background:rgba(7,35,65,.82);
+}
+
+@media(min-width:901px){
+  #video-editing .work-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:24px !important;
+    max-width:1180px;
+    margin-inline:auto;
+  }
+
+  #video-editing .work-card{
+    min-width:0;
+  }
+
+  #video-editing .work-thumb{
+    aspect-ratio:16 / 9;
+  }
+
+  #video-editing .work-copy{
+    min-height:390px !important;
+    padding:28px !important;
+  }
+
+  #video-editing .work-copy h3{
+    font-size:clamp(28px,2.2vw,38px) !important;
+  }
+
+  #video-editing .work-copy p{
+    font-size:15px !important;
+  }
+
+  .clinic-funnel-feature .work-card-featured{
+    display:grid !important;
+    flex-direction:initial !important;
+    grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
+    min-height:470px;
+    max-width:1180px;
+    margin-inline:auto;
+  }
+
+  .clinic-funnel-feature .work-card-featured .work-thumb{
+    aspect-ratio:auto;
+    min-height:470px;
+    border-right:1px solid rgba(56,189,248,.18);
+  }
+
+  .clinic-funnel-feature .work-card-featured .work-copy{
+    min-height:470px !important;
+  }
+}
+
+@media(min-width:701px) and (max-width:900px){
+  #video-editing .work-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:18px !important;
+  }
+
+  #video-editing .work-copy{
+    min-height:410px !important;
+  }
+
+  .clinic-funnel-feature .work-card-featured{
+    width:100%;
+  }
+
+  .clinic-funnel-feature .work-card-featured .work-thumb{
+    aspect-ratio:16 / 8;
+  }
+}
+
+@media(max-width:700px){
+  #video-editing .work-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  #video-editing .work-copy{
+    min-height:0 !important;
+  }
+
+  .clinic-funnel-feature .work-card-featured{
+    width:100%;
+  }
+
+  .clinic-funnel-feature .work-card-featured .work-thumb{
+    aspect-ratio:16 / 10;
+  }
+
+  .clinic-funnel-feature .work-card-featured .work-copy h3{
+    max-width:none;
+  }
+}
