@@ -13316,3 +13316,1676 @@ main{
     max-width:none;
   }
 }
+
+
+/* === V104 Dedicated Landing Page Funnel === */
+.funnel-page{
+  overflow:hidden;
+}
+
+.funnel-hero{
+  position:relative;
+  min-height:calc(100vh - 88px);
+  padding:clamp(95px,9vw,150px) 0 90px;
+  display:grid;
+  align-items:center;
+  overflow:hidden;
+}
+
+.funnel-hero-bg{
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(14,165,233,.32),transparent 30%),
+    radial-gradient(circle at 85% 22%,rgba(37,99,235,.22),transparent 34%),
+    radial-gradient(circle at 50% 105%,rgba(125,211,252,.20),transparent 38%),
+    linear-gradient(135deg,#020817,#06142c 46%,#020817);
+  filter:saturate(1.1);
+}
+
+.funnel-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(125,211,252,.04) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(125,211,252,.04) 1px, transparent 1px);
+  background-size:58px 58px;
+  mask-image:linear-gradient(to bottom,transparent,black 20%,black 82%,transparent);
+  pointer-events:none;
+}
+
+.funnel-hero-layout{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(420px,.98fr);
+  gap:clamp(34px,5vw,72px);
+  align-items:center;
+}
+
+.funnel-hero-copy h1{
+  max-width:820px;
+  font-size:clamp(50px,6.8vw,96px);
+  line-height:.9;
+  letter-spacing:-.075em;
+  margin:16px 0 24px;
+  color:#fff;
+}
+
+.funnel-hero-copy p{
+  max-width:660px;
+  color:#c8d7eb;
+  font-size:clamp(17px,1.4vw,21px);
+  line-height:1.72;
+}
+
+.funnel-actions{
+  margin-top:30px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.funnel-proof-row{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  max-width:650px;
+}
+
+.funnel-proof-row span{
+  padding:16px;
+  border:1px solid rgba(125,211,252,.20);
+  border-radius:22px;
+  background:rgba(255,255,255,.055);
+  backdrop-filter:blur(16px);
+}
+
+.funnel-proof-row b{
+  display:block;
+  color:#fff;
+  font-size:15px;
+}
+
+.funnel-proof-row small{
+  display:block;
+  color:#9db2cc;
+  margin-top:4px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:10px;
+  font-weight:900;
+}
+
+.funnel-hero-system{
+  perspective:1100px;
+}
+
+.funnel-dashboard-card{
+  position:relative;
+  padding:26px;
+  border:1px solid rgba(125,211,252,.22);
+  border-radius:34px;
+  background:
+    linear-gradient(145deg,rgba(8,22,48,.94),rgba(3,11,28,.86)),
+    radial-gradient(circle at top right,rgba(14,165,233,.18),transparent 34%);
+  box-shadow:0 42px 120px rgba(0,0,0,.48),0 0 0 1px rgba(255,255,255,.03) inset;
+  transform:rotateY(-5deg) rotateX(2deg);
+  overflow:hidden;
+}
+
+.funnel-dashboard-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(135deg,rgba(125,211,252,.30),transparent 28%,rgba(37,99,235,.22));
+  opacity:.35;
+  pointer-events:none;
+}
+
+.funnel-dashboard-card>*{
+  position:relative;
+}
+
+.funnel-dash-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:20px;
+}
+
+.funnel-dash-top b{
+  color:#fff;
+}
+
+.funnel-dash-top span{
+  padding:7px 10px;
+  border-radius:999px;
+  color:#a7f3ff;
+  background:rgba(14,165,233,.12);
+  border:1px solid rgba(125,211,252,.22);
+  font-size:12px;
+  font-weight:900;
+}
+
+.funnel-stage-list{
+  display:grid;
+  gap:13px;
+}
+
+.funnel-stage-list div{
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:12px;
+  padding:16px;
+  border-radius:22px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(125,211,252,.14);
+}
+
+.funnel-stage-list div.active{
+  background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(37,99,235,.10));
+  border-color:rgba(125,211,252,.28);
+}
+
+.funnel-stage-list i{
+  grid-row:1 / span 2;
+  width:38px;
+  height:38px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:linear-gradient(135deg,#0ea5e9,#2563eb);
+  font-style:normal;
+  font-weight:950;
+  font-size:12px;
+}
+
+.funnel-stage-list b{
+  color:#fff;
+  line-height:1.2;
+}
+
+.funnel-stage-list small{
+  color:#9db2cc;
+  line-height:1.5;
+}
+
+.funnel-dash-metrics{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+
+.funnel-dash-metrics span{
+  padding:14px;
+  border-radius:20px;
+  background:rgba(2,8,23,.5);
+  border:1px solid rgba(125,211,252,.12);
+}
+
+.funnel-dash-metrics strong{
+  display:block;
+  color:#fff;
+  font-size:25px;
+  letter-spacing:-.04em;
+}
+
+.funnel-dash-metrics small{
+  display:block;
+  color:#8ea1bd;
+  margin-top:4px;
+  text-transform:uppercase;
+  font-size:10px;
+  font-weight:900;
+}
+
+.funnel-pain-grid,
+.funnel-feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+
+.funnel-pain-grid article,
+.funnel-feature-grid article,
+.funnel-stack-card,
+.funnel-form-card,
+.funnel-conversion-copy{
+  position:relative;
+  padding:clamp(22px,2.4vw,32px);
+  border:1px solid var(--line);
+  border-radius:30px;
+  background:var(--panel);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.funnel-pain-grid article::before,
+.funnel-feature-grid article::before,
+.funnel-stack-card::before,
+.funnel-form-card::before,
+.funnel-conversion-copy::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(135deg,rgba(14,165,233,.18),transparent 45%,rgba(37,99,235,.12));
+  opacity:.46;
+  pointer-events:none;
+}
+
+.funnel-pain-grid article>* ,
+.funnel-feature-grid article>* ,
+.funnel-stack-card>* ,
+.funnel-form-card>* ,
+.funnel-conversion-copy>*{
+  position:relative;
+}
+
+.funnel-pain-grid span,
+.funnel-feature-grid span{
+  display:inline-grid;
+  place-items:center;
+  min-width:44px;
+  height:44px;
+  padding:0 12px;
+  margin-bottom:18px;
+  border-radius:16px;
+  background:rgba(14,165,233,.12);
+  border:1px solid rgba(14,165,233,.22);
+  color:var(--blue);
+  font-weight:1000;
+}
+
+.funnel-pain-grid h3,
+.funnel-feature-grid h3{
+  font-size:clamp(21px,2vw,27px);
+  line-height:1.05;
+  letter-spacing:-.045em;
+  margin-bottom:10px;
+}
+
+.funnel-pain-grid p,
+.funnel-feature-grid p,
+.funnel-stack-card p,
+.funnel-conversion-copy p,
+.funnel-form-card p{
+  color:var(--muted);
+  line-height:1.68;
+}
+
+.funnel-solution-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(350px,.72fr);
+  gap:28px;
+  align-items:center;
+}
+
+.funnel-solution-copy h2,
+.funnel-conversion-copy h2,
+.funnel-final-cta h2{
+  font-size:clamp(34px,4.5vw,68px);
+  line-height:.98;
+  letter-spacing:-.06em;
+  margin:10px 0 18px;
+}
+
+.funnel-solution-copy p{
+  color:var(--muted);
+  max-width:720px;
+  line-height:1.75;
+  font-size:17px;
+}
+
+.funnel-checklist{
+  list-style:none;
+  padding:0;
+  margin:26px 0 0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.funnel-checklist li{
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(14,165,233,.07);
+  color:var(--text);
+  font-weight:850;
+}
+
+.funnel-checklist li::before{
+  content:"✓";
+  color:var(--blue);
+  margin-right:8px;
+  font-weight:1000;
+}
+
+.funnel-stack-card h3{
+  font-size:clamp(28px,3vw,42px);
+  line-height:1;
+  letter-spacing:-.05em;
+  margin:8px 0 14px;
+}
+
+.funnel-stack-card>span{
+  display:inline-flex;
+  padding:8px 11px;
+  border-radius:999px;
+  color:var(--blue);
+  border:1px solid rgba(14,165,233,.22);
+  background:rgba(14,165,233,.08);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:1000;
+}
+
+.funnel-stack-bars{
+  margin-top:26px;
+  display:grid;
+  gap:12px;
+}
+
+.funnel-stack-bars i{
+  display:block;
+  width:var(--w);
+  height:13px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#0ea5e9,#2563eb,rgba(125,211,252,.85));
+  box-shadow:0 12px 24px rgba(14,165,233,.22);
+}
+
+.funnel-flow-line{
+  display:flex;
+  align-items:stretch;
+  gap:10px;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:34px;
+  background:var(--panel);
+  box-shadow:var(--shadow);
+}
+
+.funnel-flow-line article{
+  flex:1;
+  min-width:0;
+  padding:22px;
+  border-radius:24px;
+  background:rgba(14,165,233,.07);
+  border:1px solid rgba(14,165,233,.15);
+}
+
+.funnel-flow-line b{
+  display:block;
+  font-size:20px;
+  letter-spacing:-.04em;
+  color:var(--text);
+}
+
+.funnel-flow-line small{
+  display:block;
+  color:var(--muted);
+  line-height:1.55;
+  margin-top:8px;
+}
+
+.funnel-flow-line>i{
+  width:28px;
+  align-self:center;
+  height:2px;
+  background:linear-gradient(90deg,rgba(14,165,233,.2),rgba(125,211,252,.9));
+  position:relative;
+}
+
+.funnel-flow-line>i::after{
+  content:"";
+  position:absolute;
+  right:-2px;
+  top:50%;
+  transform:translateY(-50%) rotate(45deg);
+  width:8px;
+  height:8px;
+  border-top:2px solid rgba(125,211,252,.9);
+  border-right:2px solid rgba(125,211,252,.9);
+}
+
+.funnel-feature-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.funnel-conversion-layout{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);
+  gap:28px;
+  align-items:start;
+}
+
+.funnel-conversion-copy{
+  position:sticky;
+  top:118px;
+}
+
+.funnel-review-points{
+  display:grid;
+  gap:10px;
+  margin-top:24px;
+}
+
+.funnel-review-points span{
+  padding:14px 16px;
+  border-radius:18px;
+  border:1px solid rgba(14,165,233,.18);
+  background:rgba(14,165,233,.07);
+  color:var(--text);
+  font-weight:850;
+}
+
+.funnel-form-card h3{
+  font-size:clamp(28px,3vw,42px);
+  letter-spacing:-.05em;
+  line-height:1;
+  margin:8px 0 12px;
+}
+
+.funnel-form-embed{
+  margin-top:22px;
+  border-radius:26px;
+  overflow:hidden;
+}
+
+.funnel-calendar-section{
+  padding-top:0;
+}
+
+.funnel-final-cta{
+  position:relative;
+  text-align:center;
+  padding:clamp(44px,6vw,78px) 28px;
+  border-radius:42px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(125,211,252,.22),transparent 42%),
+    linear-gradient(135deg,#06152d,#020817);
+  border:1px solid rgba(125,211,252,.20);
+  box-shadow:0 34px 110px rgba(0,0,0,.38);
+  overflow:hidden;
+}
+
+.funnel-final-cta::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.08),transparent);
+  transform:translateX(-100%);
+  animation:funnelShine 6s ease-in-out infinite;
+}
+
+@keyframes funnelShine{50%,100%{transform:translateX(100%)}}
+
+.funnel-final-cta>*{
+  position:relative;
+}
+
+.funnel-final-cta img{
+  width:90px;
+  margin:0 auto 18px;
+  filter:drop-shadow(0 0 35px rgba(125,211,252,.52));
+}
+
+.funnel-final-cta h2{
+  color:#fff;
+  margin-inline:auto;
+  max-width:820px;
+}
+
+.funnel-final-cta p{
+  max-width:720px;
+  margin:0 auto 28px;
+  color:#c8d7eb;
+  line-height:1.72;
+}
+
+@media(max-width:1180px){
+  .funnel-hero-layout,
+  .funnel-solution-layout,
+  .funnel-conversion-layout{
+    grid-template-columns:1fr;
+  }
+
+  .funnel-dashboard-card{
+    transform:none;
+  }
+
+  .funnel-conversion-copy{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:980px){
+  .funnel-flow-line{
+    display:grid;
+  }
+
+  .funnel-flow-line>i{
+    width:2px;
+    height:36px;
+    justify-self:center;
+  }
+
+  .funnel-flow-line>i::after{
+    right:auto;
+    left:50%;
+    top:auto;
+    bottom:-2px;
+    transform:translateX(-50%) rotate(135deg);
+  }
+
+  .funnel-pain-grid,
+  .funnel-feature-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:700px){
+  .funnel-hero{
+    min-height:auto;
+    padding-top:92px;
+  }
+
+  .funnel-proof-row,
+  .funnel-dash-metrics,
+  .funnel-pain-grid,
+  .funnel-feature-grid,
+  .funnel-checklist{
+    grid-template-columns:1fr;
+  }
+
+  .funnel-actions .btn,
+  .funnel-actions a{
+    width:100%;
+    justify-content:center;
+  }
+
+  .funnel-dashboard-card,
+  .funnel-flow-line,
+  .funnel-final-cta{
+    border-radius:28px;
+  }
+
+  .funnel-stage-list div{
+    grid-template-columns:38px 1fr;
+    padding:14px;
+  }
+}
+
+/* =========================================================
+   V105 Standalone Funnel Landing Page
+   - same MDS palette + typography
+   - separate campaign experience
+   - no normal website nav/footer feel
+   ========================================================= */
+body.funnel-standalone-body{
+  background:#020817;
+  color:#f8fbff;
+}
+body.funnel-standalone-body::before{
+  background:
+    radial-gradient(circle at 12% 10%,rgba(14,165,233,.22),transparent 28%),
+    radial-gradient(circle at 88% 0%,rgba(37,99,235,.22),transparent 30%),
+    radial-gradient(circle at 55% 95%,rgba(125,211,252,.13),transparent 42%),
+    linear-gradient(180deg,#020817 0%,#031126 44%,#020817 100%);
+}
+body.funnel-standalone-body::after{
+  background-image:
+    linear-gradient(rgba(125,211,252,.045) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(125,211,252,.045) 1px, transparent 1px);
+  background-size:54px 54px;
+  mask-image:linear-gradient(to bottom,black 0%,black 42%,transparent 100%);
+}
+.funnel-standalone{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.funnel-campaign-header{
+  position:fixed;
+  z-index:150;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1120px,92%);
+  min-height:72px;
+  padding:10px 12px 10px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  border:1px solid rgba(125,211,252,.18);
+  border-radius:999px;
+  background:rgba(2,8,23,.72);
+  backdrop-filter:blur(22px);
+  box-shadow:0 24px 70px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.funnel-campaign-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+.funnel-campaign-brand img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 22px rgba(14,165,233,.45));
+}
+.funnel-campaign-brand b{
+  display:block;
+  font-family:'Space Grotesk',Inter,sans-serif;
+  font-size:16px;
+  line-height:1;
+  letter-spacing:-.02em;
+  color:#fff;
+}
+.funnel-campaign-brand small{
+  display:block;
+  margin-top:5px;
+  color:#7dd3fc;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:900;
+}
+.funnel-header-cta,
+.funnel-primary-cta,
+.funnel-secondary-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border-radius:999px;
+  font-weight:950;
+  transition:.28s cubic-bezier(.18,.9,.2,1);
+}
+.funnel-header-cta{
+  min-height:48px;
+  padding:0 18px;
+  color:#fff;
+  background:linear-gradient(135deg,#2563eb,#0ea5e9);
+  box-shadow:0 18px 45px rgba(14,165,233,.32);
+  font-size:13px;
+}
+.funnel-header-cta:hover,
+.funnel-primary-cta:hover,
+.funnel-secondary-cta:hover{
+  transform:translateY(-3px);
+}
+.funnel-campaign-hero{
+  position:relative;
+  min-height:100vh;
+  padding:156px 0 92px;
+  display:grid;
+  align-items:center;
+  overflow:hidden;
+}
+.funnel-mesh{
+  position:absolute;
+  inset:-20%;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 16% 22%,rgba(14,165,233,.30),transparent 31%),
+    radial-gradient(circle at 72% 18%,rgba(37,99,235,.30),transparent 34%),
+    conic-gradient(from 210deg at 50% 50%,rgba(14,165,233,.07),transparent,rgba(37,99,235,.10),transparent),
+    linear-gradient(135deg,#020817,#06142b 45%,#020817);
+  filter:saturate(1.2);
+}
+.funnel-mesh::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(125,211,252,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(125,211,252,.055) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(circle at 50% 28%,black 0,transparent 70%);
+}
+.funnel-campaign-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);
+  gap:clamp(34px,6vw,78px);
+  align-items:center;
+}
+.funnel-campaign-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 13px;
+  border:1px solid rgba(125,211,252,.22);
+  border-radius:999px;
+  color:#7dd3fc;
+  background:rgba(14,165,233,.09);
+  font-size:12px;
+  font-weight:1000;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.funnel-campaign-kicker::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#38bdf8;
+  box-shadow:0 0 18px #38bdf8;
+}
+.funnel-campaign-copy h1{
+  max-width:900px;
+  margin:20px 0 24px;
+  font-family:'Space Grotesk',Inter,sans-serif;
+  color:#fff;
+  font-size:clamp(50px,7.7vw,104px);
+  line-height:.86;
+  letter-spacing:-.085em;
+  text-wrap:balance;
+}
+.funnel-campaign-lead{
+  max-width:720px;
+  color:#c7d7ee;
+  font-size:clamp(17px,1.5vw,22px);
+  line-height:1.68;
+}
+.funnel-campaign-actions{
+  margin-top:34px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.funnel-primary-cta{
+  min-height:58px;
+  padding:0 27px;
+  color:#fff;
+  background:linear-gradient(135deg,#1d4ed8,#0ea5e9 72%,#38bdf8);
+  box-shadow:0 20px 58px rgba(14,165,233,.34);
+  border:1px solid rgba(125,211,252,.30);
+}
+.funnel-secondary-cta{
+  min-height:58px;
+  padding:0 24px;
+  color:#dff7ff;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(125,211,252,.20);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+}
+.funnel-no-distraction{
+  margin-top:28px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.funnel-no-distraction span{
+  padding:10px 13px;
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:999px;
+  color:#9fb5d1;
+  background:rgba(255,255,255,.04);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.funnel-command-panel{
+  position:relative;
+  padding:25px;
+  border:1px solid rgba(125,211,252,.22);
+  border-radius:36px;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(14,165,233,.22),transparent 34%),
+    linear-gradient(145deg,rgba(6,18,42,.96),rgba(2,8,23,.92));
+  box-shadow:0 44px 120px rgba(0,0,0,.50),inset 0 1px 0 rgba(255,255,255,.06);
+  transform:rotateY(-3deg) rotateX(1deg);
+  overflow:hidden;
+}
+.funnel-command-panel::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(135deg,rgba(125,211,252,.24),transparent 38%,rgba(37,99,235,.18));
+  opacity:.45;
+  pointer-events:none;
+}
+.funnel-command-panel>*{position:relative}
+.funnel-panel-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:20px;
+}
+.funnel-panel-top b{color:#fff;font-size:14px;letter-spacing:.02em}
+.funnel-panel-top span{
+  padding:7px 10px;
+  border:1px solid rgba(125,211,252,.20);
+  border-radius:999px;
+  color:#a7f3ff;
+  background:rgba(14,165,233,.12);
+  font-size:11px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+.funnel-live-path{
+  display:grid;
+  gap:13px;
+}
+.funnel-live-path article{
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:13px;
+  padding:16px;
+  border:1px solid rgba(125,211,252,.14);
+  border-radius:22px;
+  background:rgba(255,255,255,.055);
+}
+.funnel-live-path article.is-hot{
+  background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(37,99,235,.10));
+  border-color:rgba(125,211,252,.30);
+  box-shadow:0 18px 46px rgba(14,165,233,.12);
+}
+.funnel-live-path i{
+  grid-row:1 / span 2;
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  color:#fff;
+  background:linear-gradient(135deg,#2563eb,#0ea5e9);
+  font-style:normal;
+  font-size:12px;
+  font-weight:1000;
+}
+.funnel-live-path b{color:#fff;line-height:1.18}
+.funnel-live-path small{color:#9fb5d1;line-height:1.5}
+.funnel-alert-card{
+  margin-top:16px;
+  padding:17px;
+  border:1px solid rgba(125,211,252,.18);
+  border-radius:22px;
+  background:rgba(2,8,23,.58);
+}
+.funnel-alert-card strong{display:block;color:#fff;line-height:1.3}
+.funnel-alert-card small{display:block;color:#8ea7c5;margin-top:5px;line-height:1.5}
+.funnel-campaign-strip{
+  border-block:1px solid rgba(125,211,252,.15);
+  background:rgba(14,165,233,.055);
+  padding:24px 0;
+}
+.funnel-strip-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.funnel-strip-grid div{
+  padding:18px 20px;
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:22px;
+  background:rgba(255,255,255,.045);
+}
+.funnel-strip-grid b{display:block;color:#fff;font-size:20px;letter-spacing:-.03em}
+.funnel-strip-grid span{display:block;color:#8fa8c6;margin-top:4px;font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.12em}
+.funnel-leak-section,
+.funnel-system-section,
+.funnel-path-section,
+.funnel-includes-campaign,
+.funnel-form-campaign,
+.funnel-calendar-campaign,
+.funnel-final-campaign{
+  padding:clamp(82px,9vw,128px) 0;
+  position:relative;
+}
+.funnel-campaign-heading{
+  max-width:900px;
+  margin:0 0 42px;
+}
+.funnel-campaign-heading span{
+  color:#38bdf8;
+  font-weight:1000;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+.funnel-campaign-heading h2,
+.funnel-system-copy h2,
+.funnel-form-copy h2,
+.funnel-calendar-copy h2,
+.funnel-final-box h2{
+  margin-top:14px;
+  font-family:'Space Grotesk',Inter,sans-serif;
+  font-size:clamp(36px,5.4vw,74px);
+  line-height:.96;
+  letter-spacing:-.065em;
+  color:#fff;
+  text-wrap:balance;
+}
+.lead-leak-grid,
+.funnel-includes-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.lead-leak-grid article,
+.funnel-includes-grid article,
+.funnel-before-after>div,
+.funnel-embed-card,
+.funnel-form-copy,
+.funnel-calendar-box,
+.funnel-final-box{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:32px;
+  background:linear-gradient(180deg,rgba(8,24,52,.78),rgba(3,12,28,.66));
+  box-shadow:0 28px 80px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.lead-leak-grid article,
+.funnel-includes-grid article{
+  padding:30px;
+}
+.lead-leak-grid article::before,
+.funnel-includes-grid article::before,
+.funnel-before-after>div::before,
+.funnel-embed-card::before,
+.funnel-form-copy::before,
+.funnel-calendar-box::before,
+.funnel-final-box::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(135deg,rgba(14,165,233,.16),transparent 44%,rgba(37,99,235,.12));
+  opacity:.6;
+  pointer-events:none;
+}
+.lead-leak-grid article>*,
+.funnel-includes-grid article>*,
+.funnel-before-after>div>*,
+.funnel-embed-card>*,
+.funnel-form-copy>*,
+.funnel-calendar-box>*,
+.funnel-final-box>*{position:relative}
+.lead-leak-grid small,
+.funnel-includes-grid em{
+  display:inline-grid;
+  place-items:center;
+  min-width:54px;
+  height:42px;
+  padding:0 12px;
+  border:1px solid rgba(125,211,252,.20);
+  border-radius:16px;
+  background:rgba(14,165,233,.10);
+  color:#7dd3fc;
+  font-style:normal;
+  font-weight:1000;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:11px;
+  margin-bottom:22px;
+}
+.lead-leak-grid h3,
+.funnel-includes-grid h3{
+  color:#fff;
+  font-size:clamp(24px,2.4vw,34px);
+  line-height:1;
+  letter-spacing:-.05em;
+  margin-bottom:12px;
+}
+.lead-leak-grid p,
+.funnel-includes-grid p,
+.funnel-system-copy p,
+.funnel-form-copy p,
+.funnel-embed-card p,
+.funnel-calendar-copy p,
+.funnel-final-box p{
+  color:#a9bdd6;
+  line-height:1.72;
+}
+.funnel-system-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(390px,.9fr);
+  gap:30px;
+  align-items:center;
+}
+.funnel-system-copy p{
+  max-width:760px;
+  margin-top:20px;
+  font-size:17px;
+}
+.funnel-before-after{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.funnel-before-after>div{
+  padding:28px;
+}
+.funnel-before-after span{
+  display:inline-block;
+  color:#fff;
+  font-family:'Space Grotesk';
+  font-size:28px;
+  letter-spacing:-.04em;
+  margin-bottom:18px;
+}
+.funnel-before-after ul{
+  list-style:none;
+  display:grid;
+  gap:12px;
+}
+.funnel-before-after li{
+  color:#b6c7de;
+  line-height:1.5;
+  font-weight:750;
+}
+.before-card li::before{content:"✕";color:#93c5fd;margin-right:9px;font-weight:1000}
+.after-card li::before{content:"✓";color:#38bdf8;margin-right:9px;font-weight:1000}
+.after-card{
+  border-color:rgba(56,189,248,.30) !important;
+  box-shadow:0 28px 88px rgba(14,165,233,.14),inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+.funnel-conversion-path{
+  display:grid;
+  grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr 28px 1fr;
+  gap:0;
+  align-items:stretch;
+}
+.funnel-conversion-path article{
+  min-height:150px;
+  padding:24px;
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:28px;
+  background:rgba(255,255,255,.045);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.funnel-conversion-path b{
+  color:#fff;
+  font-size:23px;
+  letter-spacing:-.04em;
+}
+.funnel-conversion-path p{color:#96acc9;line-height:1.5;margin-top:14px}
+.funnel-conversion-path i{
+  align-self:center;
+  height:2px;
+  background:linear-gradient(90deg,rgba(14,165,233,.30),rgba(125,211,252,.90));
+  position:relative;
+  top:50%;
+}
+.funnel-form-campaign-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.78fr) minmax(420px,1fr);
+  gap:28px;
+  align-items:start;
+}
+.funnel-form-copy,
+.funnel-embed-card{
+  padding:clamp(26px,3vw,38px);
+}
+.funnel-form-copy p{
+  margin-top:18px;
+  font-size:17px;
+}
+.funnel-review-stack{
+  margin-top:24px;
+  display:grid;
+  gap:11px;
+}
+.funnel-review-stack span{
+  padding:14px 15px;
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:18px;
+  background:rgba(14,165,233,.075);
+  color:#dbeafe;
+  font-weight:850;
+}
+.funnel-review-stack span::before{content:"✓";color:#38bdf8;margin-right:9px;font-weight:1000}
+.funnel-embed-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  margin-bottom:16px;
+}
+.funnel-embed-head b{color:#fff;font-family:'Space Grotesk';font-size:22px;letter-spacing:-.04em}
+.funnel-embed-head span{
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(14,165,233,.12);
+  color:#a7f3ff;
+  border:1px solid rgba(125,211,252,.20);
+  font-size:11px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+.funnel-embed-card h3{
+  color:#fff;
+  font-size:clamp(28px,3vw,42px);
+  letter-spacing:-.05em;
+  line-height:1;
+  margin-bottom:10px;
+}
+.funnel-form-embed{
+  margin-top:20px;
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:24px;
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
+}
+.funnel-form-embed iframe{
+  display:block;
+  width:100%;
+  min-height:720px;
+  border:0;
+}
+.funnel-calendar-box{
+  padding:clamp(26px,3vw,40px);
+}
+.funnel-calendar-copy{
+  max-width:900px;
+  margin-bottom:24px;
+}
+.funnel-calendar-copy p{
+  margin-top:16px;
+  font-size:17px;
+}
+.funnel-calendar-features{
+  margin-top:24px;
+}
+.funnel-calendar-features div{
+  background:rgba(255,255,255,.045);
+  border-color:rgba(125,211,252,.16);
+}
+.funnel-calendar-embed{
+  margin-top:26px;
+  min-height:760px;
+  border-radius:28px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(125,211,252,.16);
+  overflow:hidden;
+}
+.funnel-final-box{
+  text-align:center;
+  padding:clamp(38px,6vw,78px);
+}
+.funnel-final-box img{
+  width:86px;
+  margin:0 auto 22px;
+  filter:drop-shadow(0 0 32px rgba(14,165,233,.55));
+}
+.funnel-final-box span{
+  display:block;
+  color:#7dd3fc;
+  font-weight:1000;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+.funnel-final-box p{
+  max-width:740px;
+  margin:18px auto 28px;
+  font-size:18px;
+}
+.funnel-campaign-footer{
+  padding:30px 0 44px;
+  border-top:1px solid rgba(125,211,252,.13);
+  background:rgba(2,8,23,.72);
+}
+.funnel-footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.funnel-footer-inner p{
+  color:#dbeafe;
+  font-weight:750;
+}
+.funnel-footer-inner span{
+  color:#8ea7c5;
+  font-size:13px;
+  max-width:560px;
+}
+@media(max-width:1080px){
+  .funnel-campaign-grid,
+  .funnel-system-grid,
+  .funnel-form-campaign-grid{
+    grid-template-columns:1fr;
+  }
+  .funnel-command-panel{
+    transform:none;
+  }
+  .funnel-conversion-path{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .funnel-conversion-path i{
+    width:2px;
+    height:26px;
+    justify-self:center;
+    background:linear-gradient(180deg,rgba(14,165,233,.30),rgba(125,211,252,.90));
+    top:0;
+  }
+}
+@media(max-width:820px){
+  .funnel-campaign-header{
+    top:12px;
+    width:94%;
+    min-height:66px;
+  }
+  .funnel-campaign-brand img{
+    width:46px;
+    height:46px;
+  }
+  .funnel-campaign-brand b{
+    font-size:14px;
+  }
+  .funnel-campaign-brand small{
+    display:none;
+  }
+  .funnel-header-cta{
+    min-height:42px;
+    padding:0 14px;
+    font-size:12px;
+  }
+  .funnel-campaign-hero{
+    padding-top:126px;
+    min-height:auto;
+  }
+  .funnel-strip-grid,
+  .lead-leak-grid,
+  .funnel-includes-grid,
+  .funnel-before-after{
+    grid-template-columns:1fr;
+  }
+  .funnel-campaign-copy h1{
+    font-size:clamp(44px,13vw,72px);
+  }
+  .funnel-campaign-actions{
+    align-items:stretch;
+  }
+  .funnel-primary-cta,
+  .funnel-secondary-cta{
+    width:100%;
+  }
+  .funnel-form-embed iframe{
+    min-height:780px;
+  }
+  .funnel-calendar-embed{
+    min-height:780px;
+  }
+}
+@media(max-width:520px){
+  .funnel-campaign-header{
+    border-radius:26px;
+  }
+  .funnel-campaign-brand span{
+    display:none;
+  }
+  .funnel-command-panel,
+  .lead-leak-grid article,
+  .funnel-includes-grid article,
+  .funnel-form-copy,
+  .funnel-embed-card,
+  .funnel-calendar-box,
+  .funnel-final-box{
+    border-radius:24px;
+  }
+  .funnel-live-path article{
+    grid-template-columns:1fr;
+  }
+  .funnel-live-path i{
+    grid-row:auto;
+  }
+  .funnel-footer-inner{
+    display:grid;
+  }
+}
+
+
+/* =========================================================
+   V106 Standalone Funnel Motion Layer
+   - more campaign-style movement without changing brand
+   - respects reduced motion
+   ========================================================= */
+.funnel-standalone-body{
+  --funnel-mx:50%;
+  --funnel-my:18%;
+}
+.funnel-standalone-body::before{
+  background:
+    radial-gradient(circle at var(--funnel-mx) var(--funnel-my),rgba(14,165,233,.20),transparent 24%),
+    radial-gradient(circle at 12% 10%,rgba(14,165,233,.22),transparent 28%),
+    radial-gradient(circle at 88% 0%,rgba(37,99,235,.22),transparent 30%),
+    radial-gradient(circle at 55% 95%,rgba(125,211,252,.13),transparent 42%),
+    linear-gradient(180deg,#020817 0%,#031126 44%,#020817 100%);
+}
+.funnel-motion-orbits{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+.funnel-motion-orbits span{
+  position:absolute;
+  width:42vw;
+  aspect-ratio:1;
+  min-width:360px;
+  border-radius:50%;
+  border:1px solid rgba(125,211,252,.12);
+  background:radial-gradient(circle,rgba(14,165,233,.10),transparent 58%);
+  filter:blur(.2px);
+  animation:funnel-orbit-drift 18s ease-in-out infinite;
+}
+.funnel-motion-orbits span:nth-child(1){left:-14vw;top:18%;animation-duration:22s}
+.funnel-motion-orbits span:nth-child(2){right:-20vw;top:4%;animation-duration:26s;animation-delay:-7s}
+.funnel-motion-orbits span:nth-child(3){left:38%;bottom:-26vw;animation-duration:30s;animation-delay:-12s}
+.funnel-signal-lines{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  opacity:.75;
+}
+.funnel-signal-lines i{
+  position:absolute;
+  left:-20%;
+  width:140%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(125,211,252,.0),rgba(125,211,252,.72),rgba(14,165,233,.0),transparent);
+  box-shadow:0 0 24px rgba(14,165,233,.55);
+  transform:rotate(-10deg);
+  animation:funnel-signal-sweep 8s linear infinite;
+}
+.funnel-signal-lines i:nth-child(1){top:26%;animation-delay:-1s}
+.funnel-signal-lines i:nth-child(2){top:48%;animation-delay:-4s;opacity:.55}
+.funnel-signal-lines i:nth-child(3){top:72%;animation-delay:-6s;opacity:.38}
+.funnel-campaign-header{
+  animation:funnel-header-drop .8s cubic-bezier(.18,.9,.22,1) both;
+}
+.funnel-campaign-hero .container,
+.funnel-leak-section .container,
+.funnel-system-section .container,
+.funnel-path-section .container,
+.funnel-includes-campaign .container,
+.funnel-form-campaign .container,
+.funnel-calendar-campaign .container,
+.funnel-final-campaign .container{
+  position:relative;
+  z-index:2;
+}
+.funnel-campaign-kicker::before{
+  animation:funnel-pulse-dot 1.65s ease-in-out infinite;
+}
+.funnel-campaign-copy h1{
+  background:linear-gradient(92deg,#fff 0%,#e0f2fe 42%,#7dd3fc 58%,#fff 75%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  background-size:210% 100%;
+  animation:funnel-headline-shine 5.8s ease-in-out infinite;
+}
+.funnel-primary-cta,
+.funnel-header-cta{
+  position:relative;
+  overflow:hidden;
+}
+.funnel-primary-cta::after,
+.funnel-header-cta::after{
+  content:"";
+  position:absolute;
+  inset:-2px -46%;
+  background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.44),transparent 62%);
+  transform:translateX(-76%);
+  animation:funnel-cta-sweep 3.4s ease-in-out infinite;
+  pointer-events:none;
+}
+.funnel-secondary-cta:hover,
+.funnel-primary-cta:hover,
+.funnel-header-cta:hover{
+  box-shadow:0 22px 64px rgba(14,165,233,.34),0 0 0 1px rgba(125,211,252,.18) inset;
+}
+.funnel-no-distraction span{
+  transition:transform .28s ease,border-color .28s ease,color .28s ease,background .28s ease;
+}
+.funnel-no-distraction span:hover{
+  transform:translateY(-4px);
+  border-color:rgba(125,211,252,.42);
+  color:#e0f2fe;
+  background:rgba(14,165,233,.12);
+}
+.funnel-motion-proof{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  max-width:620px;
+}
+.funnel-motion-proof div{
+  padding:16px;
+  border:1px solid rgba(125,211,252,.18);
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+}
+.funnel-motion-proof b{
+  display:block;
+  color:#fff;
+  font-family:'Space Grotesk',Inter,sans-serif;
+  font-size:clamp(26px,3vw,40px);
+  line-height:1;
+}
+.funnel-motion-proof span{
+  display:block;
+  margin-top:7px;
+  color:#8ea7c5;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.11em;
+}
+.funnel-command-panel{
+  transition:transform .22s ease,box-shadow .28s ease;
+  transform:perspective(1100px) rotateY(var(--funnel-tilt-x,-3deg)) rotateX(var(--funnel-tilt-y,1deg)) translate3d(var(--funnel-panel-x,0),var(--funnel-panel-y,0),0);
+}
+.funnel-command-panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at var(--panel-mx,50%) var(--panel-my,18%),rgba(125,211,252,.20),transparent 30%);
+  opacity:.75;
+  pointer-events:none;
+}
+.funnel-live-mode{
+  display:inline-flex !important;
+  align-items:center;
+  gap:7px;
+}
+.funnel-live-mode i{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#38bdf8;
+  box-shadow:0 0 18px #38bdf8;
+  animation:funnel-pulse-dot 1.35s ease-in-out infinite;
+}
+.funnel-live-path article{
+  transition:transform .28s ease,border-color .28s ease,background .28s ease;
+  animation:funnel-path-float 5.8s ease-in-out infinite;
+}
+.funnel-live-path article:nth-child(2){animation-delay:-1.2s}
+.funnel-live-path article:nth-child(3){animation-delay:-2.4s}
+.funnel-live-path article:nth-child(4){animation-delay:-3.6s}
+.funnel-live-path article:hover{
+  transform:translateX(8px) scale(1.01);
+  border-color:rgba(125,211,252,.40);
+  background:rgba(14,165,233,.12);
+}
+.funnel-alert-card{
+  animation:funnel-alert-glow 2.7s ease-in-out infinite;
+}
+.funnel-campaign-strip{
+  position:relative;
+  overflow:hidden;
+}
+.funnel-campaign-strip::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(125,211,252,.12),transparent);
+  transform:translateX(-100%);
+  animation:funnel-strip-scan 5.4s linear infinite;
+}
+.lead-leak-grid article,
+.funnel-includes-grid article,
+.funnel-before-after>div,
+.funnel-form-copy,
+.funnel-embed-card,
+.funnel-calendar-box,
+.funnel-final-box{
+  transition:transform .32s ease,border-color .32s ease,box-shadow .32s ease;
+}
+.lead-leak-grid article:hover,
+.funnel-includes-grid article:hover,
+.funnel-before-after>div:hover,
+.funnel-form-copy:hover,
+.funnel-embed-card:hover,
+.funnel-calendar-box:hover,
+.funnel-final-box:hover{
+  transform:translateY(-8px);
+  border-color:rgba(125,211,252,.38);
+  box-shadow:0 34px 100px rgba(0,0,0,.34),0 0 52px rgba(14,165,233,.13),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.lead-leak-grid article::after,
+.funnel-includes-grid article::after,
+.funnel-before-after>div::after,
+.funnel-embed-card::after,
+.funnel-form-copy::after,
+.funnel-calendar-box::after,
+.funnel-final-box::after{
+  content:"";
+  position:absolute;
+  inset:-35% -80%;
+  background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.08),transparent 62%);
+  transform:translateX(-45%);
+  opacity:0;
+  pointer-events:none;
+}
+.lead-leak-grid article:hover::after,
+.funnel-includes-grid article:hover::after,
+.funnel-before-after>div:hover::after,
+.funnel-embed-card:hover::after,
+.funnel-form-copy:hover::after,
+.funnel-calendar-box:hover::after,
+.funnel-final-box:hover::after{
+  opacity:1;
+  animation:funnel-card-shine 1.15s ease forwards;
+}
+.funnel-conversion-path article{
+  position:relative;
+  overflow:hidden;
+  transition:transform .28s ease,border-color .28s ease,background .28s ease;
+}
+.funnel-conversion-path article::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  top:22px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#38bdf8;
+  box-shadow:0 0 18px #38bdf8;
+  opacity:.7;
+}
+.funnel-conversion-path article:hover{
+  transform:translateY(-7px);
+  border-color:rgba(125,211,252,.40);
+  background:rgba(14,165,233,.09);
+}
+.funnel-conversion-path i::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,#fff,transparent);
+  animation:funnel-arrow-run 1.8s ease-in-out infinite;
+}
+.funnel-calendar-embed,
+.funnel-form-embed{
+  position:relative;
+}
+.funnel-calendar-embed::before,
+.funnel-form-embed::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#38bdf8,#2563eb,transparent);
+  animation:funnel-embed-load 3s ease-in-out infinite;
+  z-index:3;
+  pointer-events:none;
+}
+
+@keyframes funnel-header-drop{from{opacity:0;transform:translate(-50%,-16px) scale(.98)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@keyframes funnel-orbit-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(5vw,-3vw,0) scale(1.08)}}
+@keyframes funnel-signal-sweep{0%{transform:translateX(-55%) rotate(-10deg);opacity:0}18%,72%{opacity:1}100%{transform:translateX(55%) rotate(-10deg);opacity:0}}
+@keyframes funnel-pulse-dot{0%,100%{transform:scale(1);opacity:1;box-shadow:0 0 14px rgba(56,189,248,.65)}50%{transform:scale(1.38);opacity:.68;box-shadow:0 0 30px rgba(56,189,248,.95)}}
+@keyframes funnel-headline-shine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes funnel-cta-sweep{0%,50%{transform:translateX(-76%)}72%,100%{transform:translateX(76%)}}
+@keyframes funnel-path-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes funnel-alert-glow{0%,100%{box-shadow:0 0 0 rgba(14,165,233,0)}50%{box-shadow:0 0 34px rgba(14,165,233,.16)}}
+@keyframes funnel-strip-scan{to{transform:translateX(100%)}}
+@keyframes funnel-card-shine{to{transform:translateX(45%)}}
+@keyframes funnel-arrow-run{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+@keyframes funnel-embed-load{0%,100%{opacity:.25;transform:scaleX(.36)}50%{opacity:1;transform:scaleX(1)}}
+
+@media(max-width:820px){
+  .funnel-motion-proof{grid-template-columns:1fr;max-width:none}
+  .funnel-motion-orbits span{min-width:260px;width:70vw}
+  .funnel-signal-lines{opacity:.38}
+}
+@media(prefers-reduced-motion:reduce){
+  .funnel-motion-orbits span,
+  .funnel-signal-lines i,
+  .funnel-campaign-header,
+  .funnel-campaign-kicker::before,
+  .funnel-campaign-copy h1,
+  .funnel-primary-cta::after,
+  .funnel-header-cta::after,
+  .funnel-live-mode i,
+  .funnel-live-path article,
+  .funnel-alert-card,
+  .funnel-campaign-strip::before,
+  .funnel-conversion-path i::after,
+  .funnel-calendar-embed::before,
+  .funnel-form-embed::before{
+    animation:none !important;
+  }
+  .funnel-command-panel,
+  .lead-leak-grid article:hover,
+  .funnel-includes-grid article:hover,
+  .funnel-before-after>div:hover,
+  .funnel-form-copy:hover,
+  .funnel-embed-card:hover,
+  .funnel-calendar-box:hover,
+  .funnel-final-box:hover,
+  .funnel-conversion-path article:hover{
+    transform:none !important;
+  }
+}

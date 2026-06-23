@@ -1168,3 +1168,72 @@ document.addEventListener('DOMContentLoaded',()=>{
     applyCalendarHeight(payload.height);
   });
 })();
+
+
+/* V106 standalone funnel motion interactions */
+(function(){
+  const page = document.querySelector('.funnel-standalone');
+  if(!page) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  if(!reduced && finePointer){
+    const body = document.body;
+    const panel = document.querySelector('.funnel-command-panel');
+    page.addEventListener('pointermove', e => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      body.style.setProperty('--funnel-mx', `${x}%`);
+      body.style.setProperty('--funnel-my', `${y}%`);
+
+      if(panel){
+        const rect = panel.getBoundingClientRect();
+        const px = ((e.clientX - rect.left) / rect.width - .5);
+        const py = ((e.clientY - rect.top) / rect.height - .5);
+        panel.style.setProperty('--funnel-tilt-x', `${-3 + px * 5}deg`);
+        panel.style.setProperty('--funnel-tilt-y', `${1 - py * 4}deg`);
+        panel.style.setProperty('--funnel-panel-x', `${px * 8}px`);
+        panel.style.setProperty('--funnel-panel-y', `${py * 8}px`);
+        panel.style.setProperty('--panel-mx', `${(px + .5) * 100}%`);
+        panel.style.setProperty('--panel-my', `${(py + .5) * 100}%`);
+      }
+    });
+
+    document.querySelectorAll('.lead-leak-grid article,.funnel-includes-grid article,.funnel-before-after>div,.funnel-conversion-path article').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--panel-mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
+        card.style.setProperty('--panel-my', `${((e.clientY - rect.top) / rect.height) * 100}%`);
+      });
+    });
+  }
+
+  const counters = document.querySelectorAll('[data-funnel-count]');
+  if(counters.length){
+    const runCounter = el => {
+      const target = Number(el.dataset.funnelCount || 0);
+      const start = performance.now();
+      const duration = 850;
+      function tick(now){
+        const p = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased);
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    };
+
+    if('IntersectionObserver' in window && !reduced){
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(!entry.isIntersecting) return;
+          runCounter(entry.target);
+          obs.unobserve(entry.target);
+        });
+      }, {threshold:.45});
+      counters.forEach(el => obs.observe(el));
+    } else {
+      counters.forEach(el => { el.textContent = el.dataset.funnelCount || '0'; });
+    }
+  }
+})();
