@@ -1237,3 +1237,152 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   }
 })();
+
+
+
+
+/* V117 Mary two-state launcher for GHL chat widget
+   Closed: large Mary invitation graphic covers the default GHL bubble.
+   Open: small circular Mary/MDS control stays at bottom-right and toggles close.
+   No timed guessing that can reappear while a visitor is typing. */
+(function(){
+  if(document.querySelector('.funnel-standalone')) return;
+  if(document.querySelector('.mds-mary-chat-launcher')) return;
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'mds-mary-chat-launcher';
+  button.setAttribute('aria-label','Open Chat with Mary');
+  button.setAttribute('title','Chat with Mary');
+  button.innerHTML = [
+    '<img class="mds-mary-chat-launcher__closed" src="img/chat-with-mary-launcher.png" alt="Hi, I’m Mary. Click here to chat with me." loading="lazy" decoding="async">',
+    '<img class="mds-mary-chat-launcher__open" src="img/mary-chat-open-control.png" alt="Close Chat with Mary" loading="lazy" decoding="async">'
+  ].join('');
+
+  let isOpen = false;
+  let openAttempts = 0;
+
+  const getChatApi = () => window.leadConnector && window.leadConnector.chatWidget;
+
+  const setOpenState = (open) => {
+    isOpen = Boolean(open);
+    document.body.classList.toggle('mds-ghl-chat-open', isOpen);
+    button.setAttribute('aria-label', isOpen ? 'Close Chat with Mary' : 'Open Chat with Mary');
+    button.setAttribute('title', isOpen ? 'Close Chat with Mary' : 'Chat with Mary');
+  };
+
+  const nodeSignature = (el) => [
+    el.id || '',
+    typeof el.className === 'string' ? el.className : '',
+    el.getAttribute && (el.getAttribute('title') || ''),
+    el.getAttribute && (el.getAttribute('aria-label') || ''),
+    el.getAttribute && (el.getAttribute('name') || ''),
+    el.getAttribute && (el.getAttribute('src') || '')
+  ].join(' ').toLowerCase();
+
+  const isLeadConnectorNode = (el) => {
+    const s = nodeSignature(el);
+    return s.includes('leadconnector') ||
+      s.includes('chat-widget') ||
+      s.includes('msgsndr') ||
+      s.includes('lc-') ||
+      s.includes('lc_');
+  };
+
+  const isVisible = (el) => {
+    if(!el || !el.isConnected) return false;
+    const rect = el.getBoundingClientRect();
+    const style = window.getComputedStyle(el);
+    return rect.width > 2 && rect.height > 2 &&
+      style.display !== 'none' &&
+      style.visibility !== 'hidden' &&
+      Number(style.opacity || 1) > 0.05;
+  };
+
+  const nearBottomRight = (rect, xPad = 320, yPad = 260) => {
+    const vw = window.innerWidth || document.documentElement.clientWidth;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    return rect.right > vw - xPad && rect.bottom > vh - yPad;
+  };
+
+  const officialBubbleClickFallback = () => {
+    const candidates = Array.from(document.querySelectorAll('iframe, [id*="chat" i], [class*="chat" i], [id*="leadconnector" i], [class*="leadconnector" i], [id*="msgsndr" i], [class*="msgsndr" i]'));
+    const target = candidates
+      .filter(node => node !== button && !button.contains(node))
+      .filter(isVisible)
+      .filter(isLeadConnectorNode)
+      .find(node => {
+        const rect = node.getBoundingClientRect();
+        return nearBottomRight(rect) && rect.width <= 430 && rect.height <= 280;
+      });
+
+    if(target && typeof target.click === 'function'){
+      try{ target.click(); }catch(err){}
+    }
+  };
+
+  const openChat = () => {
+    setOpenState(true);
+    openAttempts = 0;
+
+    const tryOpen = () => {
+      const api = getChatApi();
+      if(api && typeof api.openWidget === 'function'){
+        try{
+          api.openWidget();
+          return;
+        }catch(err){}
+      }
+
+      openAttempts += 1;
+      if(openAttempts < 32){
+        setTimeout(tryOpen, 160);
+        return;
+      }
+
+      officialBubbleClickFallback();
+    };
+
+    tryOpen();
+  };
+
+  const closeChat = () => {
+    const api = getChatApi();
+    let closedViaApi = false;
+
+    if(api && typeof api.closeWidget === 'function'){
+      try{ api.closeWidget(); closedViaApi = true; }catch(err){}
+    }else if(api && typeof api.close === 'function'){
+      try{ api.close(); closedViaApi = true; }catch(err){}
+    }
+
+    if(!closedViaApi){
+      officialBubbleClickFallback();
+    }
+
+    setOpenState(false);
+  };
+
+  button.addEventListener('click', () => {
+    if(isOpen){
+      closeChat();
+    }else{
+      openChat();
+    }
+  });
+
+  // Respect official LeadConnector events if the user closes/minimizes from inside the widget.
+  window.addEventListener('LC_chatWidgetOpened', () => setOpenState(true), false);
+  window.addEventListener('LC_chatWidgetClosed', () => setOpenState(false), false);
+
+  const mount = () => {
+    document.body.appendChild(button);
+    requestAnimationFrame(() => button.classList.add('is-ready'));
+  };
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', mount, {once:true});
+  }else{
+    mount();
+  }
+})();
