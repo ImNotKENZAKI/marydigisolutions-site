@@ -25552,6 +25552,14 @@ body.mds-ghl-chat-open .mds-mary-chat-launcher{
     scroll-margin-top:118px;
   }
 
+  .v137-appointment-exact > .container{
+    width:100vw !important;
+    max-width:none !important;
+    margin-left:calc(50% - 50vw) !important;
+    margin-right:calc(50% - 50vw) !important;
+    padding-inline:0 !important;
+  }
+
   .v137-exact-frame{
     width:min(1880px, calc(100vw - 24px)) !important;
     max-width:none !important;
@@ -25591,5 +25599,134 @@ body.mds-ghl-chat-open .mds-mary-chat-launcher{
       linear-gradient(135deg, #36d3ff 0%, #087cff 48%, #0b4fd7 100%) !important;
     backdrop-filter:none !important;
     -webkit-backdrop-filter:none !important;
+  }
+}
+
+/* =========================================================
+   V146 - Hero 2 balanced size + subtle premium motion
+   Keeps the centered layout but reduces the artwork scale.
+========================================================= */
+@media(min-width:761px){
+  .v137-appointment-exact{
+    padding-block:clamp(42px, 4.6vw, 74px) clamp(54px, 5vw, 86px) !important;
+  }
+
+  .v137-appointment-exact > .container{
+    width:100vw !important;
+    max-width:none !important;
+    margin-left:calc(50% - 50vw) !important;
+    margin-right:calc(50% - 50vw) !important;
+    padding-inline:0 !important;
+  }
+
+  .v137-exact-frame{
+    width:min(1700px, calc(100vw - 96px)) !important;
+    max-width:none !important;
+    margin-inline:auto !important;
+    box-shadow:
+      0 24px 76px rgba(0,0,0,.38),
+      0 0 58px rgba(10,132,255,.15),
+      inset 0 0 0 1px rgba(180,242,255,.045) !important;
+    animation:v146FrameAura 8.5s ease-in-out infinite !important;
+  }
+
+  .v137-exact-frame::before{
+    opacity:.34 !important;
+    animation:v146GridDrift 28s linear infinite !important;
+  }
+
+  .v137-exact-frame::after{
+    opacity:.64 !important;
+    animation:v146DepthGlow 10s ease-in-out infinite !important;
+  }
+
+  .v142-motion-layer::before{
+    opacity:.66;
+    animation:v146CenterGlow 11s ease-in-out infinite !important;
+  }
+
+  .v144-circuit-line{
+    opacity:.46;
+    animation:v146CircuitFlow 9.5s ease-in-out infinite !important;
+  }
+
+  .v143-node{
+    animation:v146NodeBlink 4.5s ease-in-out infinite !important;
+  }
+
+  .v137-exact-hotspot{
+    animation:v141CtaPulse 5.2s ease-in-out infinite !important;
+  }
+}
+
+@media(max-width:1180px) and (min-width:761px){
+  .v137-exact-frame{
+    width:min(1040px, calc(100vw - 44px)) !important;
+  }
+}
+
+@media(max-width:760px){
+  .v137-mobile-fallback::after{
+    animation:v146MobileGlow 9s ease-in-out infinite !important;
+  }
+}
+
+@keyframes v146FrameAura{
+  0%,100%{
+    box-shadow:
+      0 24px 76px rgba(0,0,0,.38),
+      0 0 48px rgba(10,132,255,.12),
+      inset 0 0 0 1px rgba(180,242,255,.04);
+  }
+  50%{
+    box-shadow:
+      0 26px 82px rgba(0,0,0,.40),
+      0 0 72px rgba(34,211,238,.18),
+      inset 0 0 0 1px rgba(180,242,255,.07);
+  }
+}
+
+@keyframes v146GridDrift{
+  0%{background-position:-180px 0, 0 0, 0 0;opacity:.24;}
+  50%{opacity:.38;}
+  100%{background-position:180px 0, 82px 0, 0 68px;opacity:.24;}
+}
+
+@keyframes v146DepthGlow{
+  0%,100%{opacity:.50;transform:translate3d(0,0,0) scale(.992);}
+  50%{opacity:.70;transform:translate3d(7px,-5px,0) scale(1.012);}
+}
+
+@keyframes v146CenterGlow{
+  0%,100%{opacity:.48;transform:translate3d(-6px,4px,0) scale(.99);}
+  50%{opacity:.76;transform:translate3d(7px,-6px,0) scale(1.016);}
+}
+
+@keyframes v146CircuitFlow{
+  0%,100%{opacity:.26;transform:translate3d(-8px,0,0) scaleX(.94);}
+  50%{opacity:.62;transform:translate3d(9px,0,0) scaleX(1.03);}
+}
+
+@keyframes v146NodeBlink{
+  0%,100%{opacity:.30;transform:scale(.86);}
+  45%,55%{opacity:.86;transform:scale(1.12);}
+}
+
+@keyframes v146MobileGlow{
+  0%,100%{opacity:.40;transform:translate3d(0,0,0) scale(.985);}
+  50%{opacity:.68;transform:translate3d(0,-6px,0) scale(1.015);}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .v137-exact-frame,
+  .v137-exact-frame::before,
+  .v137-exact-frame::after,
+  .v142-motion-layer::before,
+  .v144-circuit-line,
+  .v143-node,
+  .v137-mobile-fallback::after{
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
   }
 }
