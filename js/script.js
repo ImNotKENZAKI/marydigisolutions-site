@@ -1386,3 +1386,342 @@ document.addEventListener('DOMContentLoaded',()=>{
     mount();
   }
 })();
+
+/* V125 premium founder appointment hero motion */
+(function(){
+  const hero = document.querySelector('[data-v125-appointment-hero]');
+  if(!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const isFinePointer = window.matchMedia('(pointer:fine)').matches;
+
+  if(isFinePointer){
+    hero.addEventListener('pointermove', e => {
+      const rect = hero.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      const shiftX = (px - 0.5) * 18;
+      const shiftY = (py - 0.5) * 14;
+      hero.style.setProperty('--v125-shift-x', `${shiftX}px`);
+      hero.style.setProperty('--v125-shift-y', `${shiftY}px`);
+      hero.style.setProperty('--v125-spot-x', `${px * 100}%`);
+      hero.style.setProperty('--v125-spot-y', `${py * 100}%`);
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      hero.style.setProperty('--v125-shift-x', '0px');
+      hero.style.setProperty('--v125-shift-y', '0px');
+      hero.style.setProperty('--v125-spot-x', '50%');
+      hero.style.setProperty('--v125-spot-y', '34%');
+    });
+  }
+})();
+
+/* V127 magnetic appointment CTA + subtle hero parallax */
+(function(){
+  const hero = document.querySelector('[data-v127-appointment-hero] .v127-appointment-shell');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  if(hero && finePointer && !reduceMotion){
+    hero.addEventListener('pointermove', (event) => {
+      const rect = hero.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width;
+      const py = (event.clientY - rect.top) / rect.height;
+      hero.style.setProperty('--mx', `${(px - .5) * 20}px`);
+      hero.style.setProperty('--my', `${(py - .5) * 16}px`);
+      hero.style.setProperty('--spot-x', `${px * 100}%`);
+      hero.style.setProperty('--spot-y', `${py * 100}%`);
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      hero.style.setProperty('--mx', '0px');
+      hero.style.setProperty('--my', '0px');
+      hero.style.setProperty('--spot-x', '58%');
+      hero.style.setProperty('--spot-y', '46%');
+    });
+  }
+
+  if(!finePointer || reduceMotion) return;
+
+  document.querySelectorAll('[data-v127-magnetic]').forEach((button) => {
+    const strength = 18;
+
+    button.addEventListener('pointermove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      button.style.setProperty('--mag-x', `${(x / rect.width) * strength}px`);
+      button.style.setProperty('--mag-y', `${(y / rect.height) * strength}px`);
+    });
+
+    button.addEventListener('pointerleave', () => {
+      button.style.setProperty('--mag-x', '0px');
+      button.style.setProperty('--mag-y', '0px');
+    });
+  });
+})();
+
+/* V128 premium appointment hero parallax + magnetic CTA */
+(function(){
+  const shell = document.querySelector('[data-v128-appointment-hero] .v128-appointment-shell');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  if(shell && finePointer && !reduceMotion){
+    shell.addEventListener('pointermove', (event) => {
+      const rect = shell.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width;
+      const py = (event.clientY - rect.top) / rect.height;
+      shell.style.setProperty('--mx', `${(px - 0.5) * 18}px`);
+      shell.style.setProperty('--my', `${(py - 0.5) * 14}px`);
+      shell.style.setProperty('--spot-x', `${px * 100}%`);
+      shell.style.setProperty('--spot-y', `${py * 100}%`);
+    });
+
+    shell.addEventListener('pointerleave', () => {
+      shell.style.setProperty('--mx', '0px');
+      shell.style.setProperty('--my', '0px');
+      shell.style.setProperty('--spot-x', '62%');
+      shell.style.setProperty('--spot-y', '48%');
+    });
+  }
+
+  if(!finePointer || reduceMotion) return;
+
+  document.querySelectorAll('[data-v128-magnetic]').forEach((button) => {
+    const strength = 26;
+
+    button.addEventListener('pointermove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      button.style.setProperty('--mag-x', `${(x / rect.width) * strength}px`);
+      button.style.setProperty('--mag-y', `${(y / rect.height) * strength}px`);
+    });
+
+    button.addEventListener('pointerleave', () => {
+      button.style.setProperty('--mag-x', '0px');
+      button.style.setProperty('--mag-y', '0px');
+    });
+  });
+})();
+
+/* V130 tested magnetic appointment section */
+(function(){
+  const shell = document.querySelector('[data-v130-shell]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  if(shell && finePointer && !reduceMotion){
+    shell.addEventListener('pointermove', (event) => {
+      const rect = shell.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width;
+      const py = (event.clientY - rect.top) / rect.height;
+      shell.style.setProperty('--mx', `${(px - 0.5) * 18}px`);
+      shell.style.setProperty('--my', `${(py - 0.5) * 14}px`);
+      shell.style.setProperty('--spot-x', `${px * 100}%`);
+      shell.style.setProperty('--spot-y', `${py * 100}%`);
+    });
+
+    shell.addEventListener('pointerleave', () => {
+      shell.style.setProperty('--mx', '0px');
+      shell.style.setProperty('--my', '0px');
+      shell.style.setProperty('--spot-x', '62%');
+      shell.style.setProperty('--spot-y', '48%');
+    });
+  }
+
+  if(!finePointer || reduceMotion) return;
+
+  document.querySelectorAll('[data-v130-magnetic]').forEach((button) => {
+    const strength = 22;
+
+    button.addEventListener('pointermove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      button.style.setProperty('--mag-x', `${(x / rect.width) * strength}px`);
+      button.style.setProperty('--mag-y', `${(y / rect.height) * strength}px`);
+    });
+
+    button.addEventListener('pointerleave', () => {
+      button.style.setProperty('--mag-x', '0px');
+      button.style.setProperty('--mag-y', '0px');
+    });
+  });
+})();
+
+/* V131 stable responsive magnetic appointment hero */
+(function(){
+  const shell = document.querySelector('[data-v131-shell]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  if(shell && finePointer && !reduceMotion){
+    shell.addEventListener('pointermove', (event) => {
+      const rect = shell.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width;
+      const py = (event.clientY - rect.top) / rect.height;
+      shell.style.setProperty('--mx', `${(px - 0.5) * 16}px`);
+      shell.style.setProperty('--my', `${(py - 0.5) * 12}px`);
+      shell.style.setProperty('--spot-x', `${px * 100}%`);
+      shell.style.setProperty('--spot-y', `${py * 100}%`);
+    });
+    shell.addEventListener('pointerleave', () => {
+      shell.style.setProperty('--mx', '0px');
+      shell.style.setProperty('--my', '0px');
+      shell.style.setProperty('--spot-x', '62%');
+      shell.style.setProperty('--spot-y', '47%');
+    });
+  }
+
+  if(!finePointer || reduceMotion) return;
+  document.querySelectorAll('[data-v131-magnetic]').forEach((button) => {
+    const strength = 20;
+    button.addEventListener('pointermove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      button.style.setProperty('--mag-x', `${(x / rect.width) * strength}px`);
+      button.style.setProperty('--mag-y', `${(y / rect.height) * strength}px`);
+    });
+    button.addEventListener('pointerleave', () => {
+      button.style.setProperty('--mag-x', '0px');
+      button.style.setProperty('--mag-y', '0px');
+    });
+  });
+})();
+
+/* V132 magnetic appointment CTA + subtle hero parallax */
+(function(){
+  const hero = document.querySelector('[data-v132-appointment-hero]');
+  const shell = document.querySelector('[data-v132-shell]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  document.querySelectorAll('[data-v132-magnetic]').forEach((button) => {
+    if (reduceMotion || !finePointer) return;
+
+    button.addEventListener('pointermove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      const strength = 0.15;
+      const max = 14;
+      const magX = Math.max(Math.min(x * strength, max), -max);
+      const magY = Math.max(Math.min(y * strength, max), -max);
+      button.style.setProperty('--mag-x', `${magX}px`);
+      button.style.setProperty('--mag-y', `${magY}px`);
+    });
+
+    button.addEventListener('pointerleave', () => {
+      button.style.setProperty('--mag-x', '0px');
+      button.style.setProperty('--mag-y', '0px');
+    });
+  });
+
+  if (shell && !reduceMotion && finePointer) {
+    shell.addEventListener('pointermove', (event) => {
+      const rect = shell.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width - 0.5;
+      const py = (event.clientY - rect.top) / rect.height - 0.5;
+      shell.style.setProperty('--hero-x', `${px * 12}px`);
+      shell.style.setProperty('--hero-y', `${py * 10}px`);
+    });
+    shell.addEventListener('pointerleave', () => {
+      shell.style.setProperty('--hero-x', '0px');
+      shell.style.setProperty('--hero-y', '0px');
+    });
+  }
+})();
+
+
+/* V135 magnetic appointment CTA */
+(function(){
+  const buttons = document.querySelectorAll('[data-v135-magnetic]');
+  if(!buttons.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  buttons.forEach((button) => {
+    let raf = null;
+    const baseTransform = () => window.innerWidth <= 620 ? 'translateX(-50%)' : 'translate3d(0,0,0)';
+
+    const reset = () => {
+      if(raf) cancelAnimationFrame(raf);
+      button.style.transform = baseTransform();
+    };
+
+    button.addEventListener('pointermove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      const moveX = Math.max(Math.min(x * 0.10, 12), -12);
+      const moveY = Math.max(Math.min(y * 0.12, 10), -10);
+      const prefix = window.innerWidth <= 620 ? 'translateX(-50%) ' : '';
+
+      if(raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        button.style.transform = `${prefix}translate3d(${moveX}px, ${moveY}px, 0) scale(1.018)`;
+      });
+    });
+
+    button.addEventListener('pointerleave', reset);
+    button.addEventListener('blur', reset);
+  });
+})();
+
+/* ============================================================
+   V136 — Magnetic CTA + Scroll Reveal
+   ============================================================ */
+(function () {
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- Magnetic hover on .v136-cta --- */
+  if (!reduced) {
+    document.querySelectorAll('[data-v136-magnetic]').forEach(function (btn) {
+      var raf = null;
+      var isMobile = function () { return window.innerWidth <= 620; };
+      var baseTransform = function () {
+        return isMobile() ? 'translateX(-50%)' : 'translate3d(0,0,0) scale(1)';
+      };
+
+      btn.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = Math.max(Math.min((e.clientX - r.left - r.width / 2) * 0.09, 11), -11);
+        var y = Math.max(Math.min((e.clientY - r.top  - r.height / 2) * 0.11, 9), -9);
+        var prefix = isMobile() ? 'translateX(-50%) ' : '';
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          btn.style.transform = prefix + 'translate3d(' + x + 'px,' + y + 'px,0) scale(1.016)';
+        });
+      });
+
+      function reset() {
+        if (raf) cancelAnimationFrame(raf);
+        btn.style.transform = baseTransform();
+      }
+      btn.addEventListener('pointerleave', reset);
+      btn.addEventListener('blur', reset);
+    });
+  }
+
+  /* --- Scroll reveal for .v136-shell --- */
+  var shells = document.querySelectorAll('.v136-shell');
+  if (!shells.length) return;
+
+  if (reduced) {
+    shells.forEach(function (el) { el.classList.add('revealed'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.10 });
+
+  shells.forEach(function (el) { observer.observe(el); });
+})();
