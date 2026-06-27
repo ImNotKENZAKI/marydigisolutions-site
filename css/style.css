@@ -26189,26 +26189,58 @@ body.mds-ghl-chat-open .mds-mary-chat-launcher{
    Keeps one funnel page responsive while using the dedicated
    MDS Free Funnel Review GHL form.
    ========================================================= */
+@media(min-width:1081px){
+  #funnel-inquiry .funnel-form-campaign-grid{
+    grid-template-columns:minmax(0,.72fr) minmax(520px,1.08fr);
+    gap:32px;
+  }
+}
+
+#funnel-inquiry .funnel-embed-card{
+  align-self:start;
+  overflow:visible;
+  padding:clamp(26px,2.4vw,34px);
+  border-color:rgba(125,211,252,.24);
+  background:
+    radial-gradient(circle at 18% 0%,rgba(56,189,248,.16),transparent 34%),
+    radial-gradient(circle at 95% 18%,rgba(37,99,235,.14),transparent 36%),
+    linear-gradient(180deg,rgba(8,24,52,.88),rgba(3,12,28,.76));
+  box-shadow:
+    0 34px 96px rgba(0,0,0,.34),
+    0 0 52px rgba(14,165,233,.11),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
 .mds-free-review-form-embed{
+  position:relative;
   width:100%;
   height:auto !important;
-  min-height:820px !important;
+  min-height:1120px !important;
+  box-sizing:border-box;
   margin-top:24px;
-  border-radius:28px;
-  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.025));
-  border:1px solid rgba(125,211,252,.16);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  padding:0;
+  border-radius:24px;
+  background:
+    linear-gradient(180deg,rgba(3,12,28,.50),rgba(2,8,20,.58)),
+    radial-gradient(circle at 50% 0%,rgba(56,189,248,.13),transparent 48%);
+  border:1px solid rgba(125,211,252,.24);
+  box-shadow:
+    0 20px 56px rgba(0,0,0,.22),
+    0 0 30px rgba(14,165,233,.08),
+    inset 0 1px 0 rgba(255,255,255,.06);
   overflow:visible !important;
 }
 
 .mds-free-review-form-embed iframe{
   display:block;
   width:100% !important;
-  height:820px !important;
-  min-height:820px !important;
+  max-width:none !important;
+  height:1120px !important;
+  min-height:1120px !important;
   border:0 !important;
   border-radius:22px;
   background:transparent !important;
+  box-shadow:none;
   overflow:visible !important;
 }
 
@@ -26217,32 +26249,35 @@ body.mds-ghl-chat-open .mds-mary-chat-launcher{
   overflow:visible !important;
 }
 
-.funnel-form-campaign .funnel-embed-card{
-  align-self:start;
-  overflow:visible;
+.mds-free-review-form-embed::after{
+  display:none;
 }
 
 @media(max-width:1080px){
   .mds-free-review-form-embed{
-    min-height:940px !important;
+    min-height:1120px !important;
   }
 
   .mds-free-review-form-embed iframe{
-    height:940px !important;
-    min-height:940px !important;
+    height:1120px !important;
+    min-height:1120px !important;
   }
 }
 
 @media(max-width:760px){
+  #funnel-inquiry .funnel-embed-card{
+    padding:clamp(22px,6vw,28px);
+  }
+
   .mds-free-review-form-embed{
-    margin-top:18px;
-    min-height:980px !important;
+    margin-top:20px;
+    min-height:1180px !important;
     border-radius:22px;
   }
 
   .mds-free-review-form-embed iframe{
-    height:980px !important;
-    min-height:980px !important;
+    height:1180px !important;
+    min-height:1180px !important;
     border-radius:18px;
   }
 }
