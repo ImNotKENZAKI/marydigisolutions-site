@@ -173,7 +173,7 @@
 
   const startRoute = () => {
     stopRoute();
-    if (doc.hidden || !routeVisible || reduceMotion.matches || routeSteps.length < 2) return;
+    if (doc.hidden || !routeVisible || reduceMotion.matches || doc.body.classList.contains("mds-motion-paused") || routeSteps.length < 2) return;
     routeTimer = window.setInterval(() => paintRoute(routeIndex + 1), 3200);
   };
 
@@ -216,7 +216,7 @@
   const startFlow = () => {
     if (flowTimer) window.clearInterval(flowTimer);
     flowTimer = 0;
-    if (doc.hidden || !flowVisible || reduceMotion.matches || flowStages.length < 2) return;
+    if (doc.hidden || !flowVisible || reduceMotion.matches || doc.body.classList.contains("mds-motion-paused") || flowStages.length < 2) return;
     flowTimer = window.setInterval(() => {
       flowIndex = (flowIndex + 1) % flowStages.length;
       paintFlow();
@@ -376,5 +376,7 @@
     startFlow();
     if (reduceMotion.matches) finishMetrics();
   });
+
+  window.addEventListener("mds:motionchange", () => { startRoute(); startFlow(); });
 
 })();

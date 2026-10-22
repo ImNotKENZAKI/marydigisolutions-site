@@ -142,7 +142,61 @@ if('IntersectionObserver' in window){
 // tilt
 Array.from(document.querySelectorAll('.card,.founder-card,.case')).forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*5}deg) rotateY(${x*7}deg) translateY(-6px)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
 // tech canvas
-const canvas=document.getElementById('techCanvas');if(canvas){const ctx=canvas.getContext('2d');let w,h,p=[];function resize(){w=canvas.width=innerWidth*devicePixelRatio;h=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';const count=Math.min(76,Math.floor(innerWidth/20));p=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.22*devicePixelRatio,vy:(Math.random()-.5)*.22*devicePixelRatio,r:(Math.random()*1.6+.7)*devicePixelRatio}))}function draw(){ctx.clearRect(0,0,w,h);const dark=body.classList.contains('dark');ctx.fillStyle=dark?'rgba(125,211,252,.55)':'rgba(14,165,233,.34)';ctx.strokeStyle=dark?'rgba(125,211,252,.13)':'rgba(14,165,233,.11)';for(const a of p){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill()}for(let i=0;i<p.length;i++){for(let j=i+1;j<p.length;j++){const a=p[i],b=p[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<132*devicePixelRatio){ctx.globalAlpha=1-d/(132*devicePixelRatio);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}}ctx.globalAlpha=1;requestAnimationFrame(draw)}addEventListener('resize',resize);resize();draw()}
+/* Background particles share the Aurora pause and reduced-motion settings. */
+(() => {
+  const canvas = document.getElementById('techCanvas');
+  const ctx = canvas?.getContext('2d');
+  if (!ctx) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let width = 0, height = 0, points = [], frame = 0;
+  let ratio = Math.min(devicePixelRatio || 1, 2);
+  function resize() {
+    ratio = Math.min(devicePixelRatio || 1, 2);
+    width = canvas.width = innerWidth * ratio;
+    height = canvas.height = innerHeight * ratio;
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    points = Array.from({length: Math.min(60, Math.floor(innerWidth / 24))}, () => ({
+      x: Math.random() * width, y: Math.random() * height,
+      vx: (Math.random() - .5) * .2 * ratio, vy: (Math.random() - .5) * .2 * ratio,
+      r: (Math.random() * 1.3 + .7) * ratio
+    }));
+  }
+  function paint(move) {
+    ctx.clearRect(0, 0, width, height);
+    ctx.strokeStyle = 'rgba(153,141,237,.15)';
+    points.forEach((point, index) => {
+      if (move) {
+        point.x += point.vx; point.y += point.vy;
+        if (point.x < 0 || point.x > width) point.vx *= -1;
+        if (point.y < 0 || point.y > height) point.vy *= -1;
+      }
+      ctx.fillStyle = index % 3 === 0 ? 'rgba(171,145,240,.6)' : 'rgba(114,203,242,.6)';
+      ctx.beginPath(); ctx.arc(point.x, point.y, point.r, 0, Math.PI * 2); ctx.fill();
+    });
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        const a = points[i], b = points[j], distance = Math.hypot(a.x - b.x, a.y - b.y);
+        if (distance >= 125 * ratio) continue;
+        ctx.globalAlpha = 1 - distance / (125 * ratio);
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  function run() {
+    cancelAnimationFrame(frame);
+    const stopped = document.hidden || reduce.matches || document.body.classList.contains('mds-motion-paused');
+    paint(!stopped);
+    if (!stopped) frame = requestAnimationFrame(run);
+  }
+  addEventListener('resize', () => { resize(); run(); }, {passive: true});
+  addEventListener('mds:motionchange', run);
+  document.addEventListener('visibilitychange', run);
+  reduce.addEventListener('change', run);
+  resize(); run();
+})();
+
 
 
 /* Founder card mouse-follow glow */
@@ -564,15 +618,15 @@ document.addEventListener("click", function(e){
 (function(){
   const projects = {
     "Dynamic Motion Graphics": {
-      tags: ["JavaScript", "Motion", "Responsive", "Brand Systems"],
+      tags: ["Motion Design", "Video Editing", "Brand Presentation"],
       metric: "Executive-ready visual storytelling"
     },
     "German Client VSL": {
-      tags: ["Funnels", "Conversion Copy", "Video Sales Letter", "Automation Ready"],
+      tags: ["Video Sales Letter", "German Market", "Video Editing"],
       metric: "Built for offer clarity and action"
     },
     "CIC Pro Hearing Aid": {
-      tags: ["Product Video", "Responsive", "Trust Assets", "Conversion Flow"],
+      tags: ["Product Video", "Benefit-led Story", "Video Editing"],
       metric: "Benefit-led product presentation"
     },
     "Clinic Funnels PH - Patient Booking Funnel": {
@@ -580,7 +634,7 @@ document.addEventListener("click", function(e){
       metric: "Connects the clinic offer, lead form, and strategy-call path"
     },
     "Fußwohl® Leather Shoes": {
-      tags: ["Premium Product", "Funnels", "Brand System", "Content Workflow"],
+      tags: ["Product Showcase", "Leather Shoes", "Video Editing"],
       metric: "High-trust product showcase"
     },
     "How I Built This Website": {
@@ -617,7 +671,7 @@ document.addEventListener("click", function(e){
 
     const result = document.createElement("div");
     result.className = "project-result";
-    result.innerHTML = `<span>Showcase Outcome</span><strong>${data.metric}</strong>`;
+    result.innerHTML = `<span>Project Focus</span><strong>${data.metric}</strong>`;
 
     const tags = document.createElement("div");
     tags.className = "tech-tags";
@@ -631,6 +685,7 @@ document.addEventListener("click", function(e){
 
 /* V81 autoplay project previews */
 (function(){
+  if(document.body.classList.contains("mds-aurora")) return;
   function youtubeId(url){
     const short = url.match(/youtu\.be\/([^?&]+)/);
     const watch = url.match(/[?&]v=([^?&]+)/);
@@ -741,8 +796,8 @@ document.addEventListener("click", function(e){
 
     if(!reducedMotion){
       window.setInterval(() => {
-        if(!paused && !document.hidden) setActive(active + 1);
-      }, 1900);
+        if(!paused && !document.hidden && !document.body.classList.contains("mds-motion-paused") && !matchMedia("(prefers-reduced-motion: reduce)").matches) setActive(active + 1);
+      }, 4200);
     }
   });
 })();
@@ -968,7 +1023,7 @@ document.addEventListener("click", function(e){
 
   setActive(0);
   window.setInterval(() => {
-    if(!paused) setActive(active + 1);
+    if(!paused && !document.hidden && !document.body.classList.contains("mds-motion-paused") && !matchMedia("(prefers-reduced-motion: reduce)").matches) setActive(active + 1);
   }, 3200);
 })();
 
