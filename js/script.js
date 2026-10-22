@@ -142,7 +142,7 @@ if('IntersectionObserver' in window){
 // tilt
 Array.from(document.querySelectorAll('.card,.founder-card,.case')).forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*5}deg) rotateY(${x*7}deg) translateY(-6px)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
 // tech canvas
-const canvas=document.getElementById('techCanvas');if(canvas&&!body.classList.contains('mds-refresh')){const ctx=canvas.getContext('2d');let w,h,p=[];function resize(){w=canvas.width=innerWidth*devicePixelRatio;h=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';const count=Math.min(76,Math.floor(innerWidth/20));p=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.22*devicePixelRatio,vy:(Math.random()-.5)*.22*devicePixelRatio,r:(Math.random()*1.6+.7)*devicePixelRatio}))}function draw(){ctx.clearRect(0,0,w,h);const dark=body.classList.contains('dark');ctx.fillStyle=dark?'rgba(125,211,252,.55)':'rgba(14,165,233,.34)';ctx.strokeStyle=dark?'rgba(125,211,252,.13)':'rgba(14,165,233,.11)';for(const a of p){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill()}for(let i=0;i<p.length;i++){for(let j=i+1;j<p.length;j++){const a=p[i],b=p[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<132*devicePixelRatio){ctx.globalAlpha=1-d/(132*devicePixelRatio);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}}ctx.globalAlpha=1;requestAnimationFrame(draw)}addEventListener('resize',resize);resize();draw()}
+const canvas=document.getElementById('techCanvas');if(canvas){const ctx=canvas.getContext('2d');let w,h,p=[];function resize(){w=canvas.width=innerWidth*devicePixelRatio;h=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';const count=Math.min(76,Math.floor(innerWidth/20));p=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.22*devicePixelRatio,vy:(Math.random()-.5)*.22*devicePixelRatio,r:(Math.random()*1.6+.7)*devicePixelRatio}))}function draw(){ctx.clearRect(0,0,w,h);const dark=body.classList.contains('dark');ctx.fillStyle=dark?'rgba(125,211,252,.55)':'rgba(14,165,233,.34)';ctx.strokeStyle=dark?'rgba(125,211,252,.13)':'rgba(14,165,233,.11)';for(const a of p){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill()}for(let i=0;i<p.length;i++){for(let j=i+1;j<p.length;j++){const a=p[i],b=p[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<132*devicePixelRatio){ctx.globalAlpha=1-d/(132*devicePixelRatio);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}}ctx.globalAlpha=1;requestAnimationFrame(draw)}addEventListener('resize',resize);resize();draw()}
 
 
 /* Founder card mouse-follow glow */
@@ -501,7 +501,7 @@ document.querySelectorAll('.founder-hierarchy-grid .founder-profile, .founder-sy
         <p>${description}</p>
         ${bullets ? `<ul>${bullets}</ul>` : ""}
         <div class="v76-modal-actions">
-          <a class="btn btn-large" href="contact.html#inquiry">Request a Free Review</a>
+          <button class="btn btn-large js-appointment" type="button">Book an Appointment</button>
           <a class="btn glass" href="contact.html#inquiry">Send Inquiry</a>
         </div>
       </div>
@@ -1246,7 +1246,7 @@ document.addEventListener('DOMContentLoaded',()=>{
    Open: small circular Mary/MDS control stays at bottom-right and toggles close.
    No timed guessing that can reappear while a visitor is typing. */
 (function(){
-  if(document.querySelector('.funnel-standalone') || document.body.classList.contains('mds-refresh')) return;
+  if(document.querySelector('.funnel-standalone')) return;
   if(document.querySelector('.mds-mary-chat-launcher')) return;
 
   const button = document.createElement('button');
